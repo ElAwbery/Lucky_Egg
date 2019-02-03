@@ -7,7 +7,7 @@ Each of the tasks below correspond to the file with the same number.
 
 1. Established a connection with the browser 
 
-2. Make a web server 
+2. Made a web server 
 
 3. Created a simple website
     - Modified the server code to make a three page website
