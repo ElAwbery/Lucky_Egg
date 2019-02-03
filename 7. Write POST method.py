@@ -47,7 +47,6 @@ class pokemon(object):
     
     def __str__(self):
         return self.name + " is a Pokemon"
-
     
 class first_stage(pokemon):
     
