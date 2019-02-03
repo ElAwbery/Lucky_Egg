@@ -167,8 +167,6 @@ class PokemonHandler(http.server.SimpleHTTPRequestHandler):
     def name_to_object(self, name):
         """Retrieves stored Pokemon instance from string name"""
         return self.pokemon_dictionary[name][0]  
-        
-
     
     def parse_http_arguments(self, string):
         """Takes a single string of user input from an HTML form
@@ -207,7 +205,6 @@ class PokemonHandler(http.server.SimpleHTTPRequestHandler):
             
         else:
             self.send_error(http.HTTPStatus.NOT_FOUND, "Pokemon Not Found".format(self.path))
-
 
     # TPython source code for the HTTPRequestHandler class: 
     # https://github.com/python/cpython/blob/2.7/Lib/BaseHTTPServer.py
@@ -251,8 +248,7 @@ class PokemonHandler(http.server.SimpleHTTPRequestHandler):
             
         else:
             self.send_error(http.HTTPStatus.NOT_FOUND, "Sorry, something went wrong.".format(self.path))
-
-        
+       
 # set up an OS connection at PORT 80, specify the handler for the port, wait for a url request 
 
 with socketserver.TCPServer(("", PORT), PokemonHandler) as httpd:
