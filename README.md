@@ -39,7 +39,7 @@ Each of the tasks below correspond to the file with the same number.
     
 10. Write load and save methods
      - Using MAMP with PHPMyAdmin set up a MySQL table
-     - Write Python methods to construct a Pokemon object from a row or save new data to the database using SQL strings
+     - Write Python methods to construct a Pokemon object from a row and save new data to the database using SQL strings
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
