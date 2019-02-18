@@ -337,7 +337,7 @@ class PokemonHandler(http.server.SimpleHTTPRequestHandler):
             except:
                 self.send_error(http.HTTPStatus.NOT_FOUND, "Pokemon Not Found".format(self.path))
 
-    # TPython source code for the HTTPRequestHandler class: 
+    # Source code for the HTTPRequestHandler class: 
     # https://github.com/python/cpython/blob/2.7/Lib/BaseHTTPServer.py
     # "  - rfile is a file object open for reading positioned at the start of the optional input data part "
                 
