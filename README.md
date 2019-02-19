@@ -42,13 +42,13 @@ Each of the tasks below correspond to the file with the same number.
      - The SQL dump to make a MySQL table for the Python code to talk to is included here
      - Write Python methods to construct a Pokemon object from a row and save new data to the database using SQL strings
      
-11. Refactoring code and normalizing the database
-
-An exercise in separating the database operations from the applicatio code. The ORM_object class has no code specific to an application object type, and the application code must not know any information specific to the database. 
+11. Refactoring code and normalizing the database:
+    An exercise in separating the database operations from the application code. The ORM_object class has no code specific to        an application object type, and the application code must not know any information specific to the database. 
 
      - Wrote an object relational map to interface with the database
+     - Refactored the class structure into two sub-classes of the ORM_object class
+     - Normalized the database to reflect the new class structure
      
-        
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
