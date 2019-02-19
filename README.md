@@ -41,6 +41,14 @@ Each of the tasks below correspond to the file with the same number.
      - Using MAMP with PHPMyAdmin set up a MySQL table
      - The SQL dump to make a MySQL table for the Python code to talk to is included here
      - Write Python methods to construct a Pokemon object from a row and save new data to the database using SQL strings
+     
+11. Refactoring code and normalizing the database
+
+An exercise in separating the database operations from the applicatio code. The ORM_object class has no code specific to an application object type, and the application code must not know any information specific to the database. 
+
+     - Wrote an object relational map to interface with the database
+     
+        
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
