@@ -3,14 +3,9 @@
 """
 Created on Sun Feb  3 14:59:45 2019
 
-@author: Charlie
+@author: ELAwbery
 """
 
-"""
-This is my completed code for the refactoring. For the 
-rest of the project I am splitting this into the Object Relational Map
-and the application code.
-"""
 """
 An exercise in refactoring:
 The database is inefficient because it stores the same data multiple times.
