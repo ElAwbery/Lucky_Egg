@@ -203,6 +203,7 @@ class ORM_object(object):
 # In previous versions, this was accomplished with globals(), but that doesn't 
 # work across modules, and anyway this is cleaner. This only goes one level
 # down in the subclass hierarchy, which is adequate for current purposes.
+
 def get_subclass_from_name(_class, name):
     """
     name is a string, name of subclass
@@ -213,7 +214,6 @@ def get_subclass_from_name(_class, name):
         if subclass.__name__ == name:
             return subclass
 
-
 # The value_to_ORM_object function is the main interface between the application
 # code and the ORM. The application code does not use UIDs, those are internal
 # to the ORM. The application code identifies an object using a unique data 
@@ -221,7 +221,7 @@ def get_subclass_from_name(_class, name):
 # This function gets the UID using the supplied data attribute name and returns 
 # the object for that UID. 
 # Subclass data attributes must match database table column names exactly
-        
+
 def value_to_ORM_object(class_name, attribute_name, value):
     """
     class_name, attribute_name and value are all strings
