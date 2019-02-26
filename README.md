@@ -19,7 +19,7 @@ Each of the tasks below correspond to the file with the same number.
 
 5. Wrote an HTML form
 
-6. Added web forms to the page class
+6. Added web forms to the page classs
 
 7. Added a POST method
     - Implemented the post method of the request handler class 
