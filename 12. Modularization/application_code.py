@@ -3,7 +3,7 @@
 """
 Created on Mon Feb 18 16:33:07 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 
 """
@@ -233,7 +233,6 @@ class pokemon_handler(server.applicationHandler):
                 contents = "Pokemon species not found."
                 
         return (content_type, contents)
-
 
     def post_router(self):
         
