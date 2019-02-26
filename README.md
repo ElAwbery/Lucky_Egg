@@ -49,6 +49,17 @@ Each of the tasks below correspond to the file with the same number.
      - Refactored the class structure into two sub-classes of the ORM_object class
      - Normalized the database to reflect the new class structure
      
+12. Modularization:
+
+     - organized the program into an MVC architecture containing four modules
+     - the database_ORM expresses the model
+     - application_code module constructs the web page view
+     - application code updated to call the server and talk to it with an HTTPRequestHandler subclass
+     - get_router and post_router methods of the Handler subclass constitute the controller of the MVC architecture
+     - server code is now separated from the application code into a server module
+     - in principle the server can process any browser request and call the application's router methods
+     - web server no longer runs on loading, it is wrapped in a function called by application code
+     - template engine separated from the application module and contains no application specific code
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
