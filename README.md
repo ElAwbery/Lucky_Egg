@@ -3,7 +3,7 @@ A full stack web development project
 
 Incrementally builds a website starting at the lowest level of back end web development and working up from there. 
 
-Each of the tasks below correspond to the file with the same number. 
+Each of the tasks below corresponds to the file with the same number. 
 
 1. Established a connection with the browser 
 
