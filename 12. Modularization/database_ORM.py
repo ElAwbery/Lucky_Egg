@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Feb 18 16:33:07 2019
+@author: ElAwbery
+"""
+
 # Importlib needed in order to import mysql.connector
 # Spyder gives a 'not used' alarm because it doesn't know it's being used 
 # behind the scenes
