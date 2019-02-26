@@ -3,7 +3,7 @@
 """
 Created on Sun Feb 24 15:17:03 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 import http.server
 import socketserver
@@ -18,8 +18,7 @@ the application code, and no longer runs on loading.
 """
 
 PORT = 80
-
-    
+ 
 # Source code for the HTTPRequestHandler class: 
 # https://github.com/python/cpython/blob/2.7/Lib/BaseHTTPServer.py
 # "  - rfile is a file object open for reading positioned at the start of 
@@ -57,8 +56,7 @@ class applicationHandler(http.server.SimpleHTTPRequestHandler):
                 value = 0
             new_data[key] = value
         
-        return(new_data)
-        
+        return(new_data) 
     
     def do_GET(self):
         """
