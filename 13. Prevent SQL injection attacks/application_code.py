@@ -3,7 +3,7 @@
 """
 Created on Mon Feb 18 16:33:07 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 
 """
@@ -58,13 +58,11 @@ class pokemon_species(ORM.ORM_object):
     pokemon_species data attributes are used to construct the body of a web 
     page representing that species
     keeps track of species counts
-    """
-    
+    """  
     
     def __init__(self, ID): 
         ORM.ORM_object.__init__(self, ID)
-        self.status_line = ""
-        
+        self.status_line = ""      
     
     def get_html(self):
         """
@@ -216,7 +214,6 @@ class pokemon_handler(server.applicationHandler):
                 contents = "Pokemon species not found."
                 
         return (content_type, contents)
-
 
     def post_router(self):
         
