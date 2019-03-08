@@ -61,7 +61,7 @@ Each of the tasks below corresponds to the file with the same number.
      - web server no longer runs on loading, it is wrapped in a function called by application code
      - template engine separated from the application module and contains no application specific code
      
-13. Prevent SQL injection attacks and store on set:
+13. Prevented SQL injection attacks and added store on set:
 
      - Added prepared cursor objects into the database_ORM and used parameters to update table values
      - Integrated set and store functionality into the ORM, replacing the store method of previous versions with a specialized setattr 
