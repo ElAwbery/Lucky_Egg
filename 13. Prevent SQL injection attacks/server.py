@@ -3,7 +3,7 @@
 """
 Created on Sun Feb 24 15:17:03 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 import http.server
 import socketserver
@@ -57,8 +57,7 @@ class applicationHandler(http.server.SimpleHTTPRequestHandler):
                 value = 0
             new_data[key] = value
         
-        return(new_data)
-        
+        return(new_data)   
     
     def do_GET(self):
         """
