@@ -60,6 +60,11 @@ Each of the tasks below corresponds to the file with the same number.
      - in principle the server can process any browser request and call the application's router methods
      - web server no longer runs on loading, it is wrapped in a function called by application code
      - template engine separated from the application module and contains no application specific code
+     
+13. Prevent SQL injection attacks:
+
+     - Added prepared cursor objects into the database_ORM and used parameters for updating table values
+     - Also replaced the store method with a specialized setattr to integrate set and store functionality into the ORM, removing all application code that set attributes in previous versions
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
