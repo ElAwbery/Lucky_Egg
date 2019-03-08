@@ -63,8 +63,9 @@ Each of the tasks below corresponds to the file with the same number.
      
 13. Prevent SQL injection attacks:
 
-     - Added prepared cursor objects into the database_ORM and used parameters for updating table values
-     - Also replaced the store method with a specialized setattr to integrate set and store functionality into the ORM, removing all application code that set attributes in previous versions
+     - Added prepared cursor objects into the database_ORM and used parameters to update table values
+     - Integrated set and store functionality into the ORM, replacing the store method of previous versions with a specialized setattr 
+     - Updated application code so that it no longer sets attributes
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
