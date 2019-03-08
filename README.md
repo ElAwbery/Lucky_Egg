@@ -67,7 +67,7 @@ Each of the tasks below corresponds to the file with the same number.
      - Integrated set and store functionality into the ORM, replacing the store method of previous versions with a specialized setattr 
      - Updated application code so that it no longer sets attributes
 
-Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
+Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
 
 
 
