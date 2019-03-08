@@ -3,7 +3,7 @@
 """
 Created on Mon Feb 25 16:47:32 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 
 def substitute(_object, template):
