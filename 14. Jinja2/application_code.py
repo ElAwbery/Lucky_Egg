@@ -3,7 +3,7 @@
 """
 Created on Mon Feb 18 16:33:07 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 
 """
@@ -96,6 +96,7 @@ def render_template(_template, pokemon):
                             status_line = pokemon.status_line,
                             count = pokemon.count, 
                             candies = pokemon.family.candies)
+
 
 class pokemon_family(ORM.ORM_object):
     """
@@ -198,7 +199,6 @@ class pokemon_handler(server.applicationHandler):
                 contents = "Pokemon species not found."
                 
         return (content_type, contents)
-
 
     def post_router(self):
         
