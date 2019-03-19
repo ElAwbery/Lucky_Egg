@@ -51,15 +51,15 @@ Each of the tasks below corresponds to the file with the same number.
      
 12. Modularization:
 
-     - organized the program into an MVC architecture containing four modules
-     - the database_ORM expresses the model
-     - application_code module constructs the web page view
-     - application code updated to call the server and talk to it with an HTTPRequestHandler subclass
+     - Organized the program into an MVC architecture containing four modules
+     - The database_ORM expresses the model
+     - Application_code module constructs the web page view
+     - Application code updated to call the server and talk to it with an HTTPRequestHandler subclass
      - get_router and post_router methods of the Handler subclass constitute the controller of the MVC architecture
-     - server code is now separated from the application code into a server module
-     - in principle the server can process any browser request and call the application's router methods
-     - web server no longer runs on loading, it is wrapped in a function called by application code
-     - template engine separated from the application module and contains no application specific code
+     - Server code is now separated from the application code into a server module
+     - In principle the server can process any browser request and call the application's router methods
+     - Web server no longer runs on loading, it is wrapped in a function called by application code
+     - Template engine separated from the application module and contains no application specific code
      
 13. Prevented SQL injection attacks and added store on set:
 
@@ -69,9 +69,9 @@ Each of the tasks below corresponds to the file with the same number.
      
 14. Replaced home built template engine with Jinja2:
 
-     - wrote base template .html file with four child templates for pokemon species stages
-     - wrote function to render templates for pokemon species
-     - updated HTML variables in application code
+     - Added base template .html file with four child templates for pokemon species stages
+     - Added function to render templates for pokemon species
+     - Updated HTML variables in application code
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
 
