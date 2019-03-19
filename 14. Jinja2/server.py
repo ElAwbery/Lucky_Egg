@@ -3,7 +3,7 @@
 """
 Created on Sun Feb 24 15:17:03 2019
 
-@author: Charlie
+@author: ElAwbery
 """
 import http.server
 import socketserver
@@ -60,7 +60,6 @@ class applicationHandler(http.server.SimpleHTTPRequestHandler):
         
         return(new_data)
         
-    
     def do_GET(self):
         """
         Called by the server when the browser sends a GET request.
