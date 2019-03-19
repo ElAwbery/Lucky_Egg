@@ -17,7 +17,7 @@
         {% else %}
             {{name}} evolves into a <a href = "/{{second}}">{{second}}</a>
     </p>
-    <p>
+    <p>     {# Keep this indentation; nested if clause. #}
             {% if third == none %}
                 {{name}} does not have a third stage evolution. 
             {% else %}
