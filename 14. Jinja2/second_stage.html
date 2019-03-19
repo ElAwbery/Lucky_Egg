@@ -1,0 +1,29 @@
+{% extends "pokemon_base.html" %}
+
+{% block content %}
+
+<h1>{{name}}</h1>
+    {{status_line}}
+    <p>{{name}} is a second stage Pokemon.</p>
+    <p>{% if third == None %}
+            {{name}} does not have a third stage evolution. 
+        {% else %}
+            {{name}} evolves into a <a href = "/{{third}}">{{third}}</a>
+        {% endif %}
+    </p>
+    <p>Its first stage is a <a href = "/{{first}}">{{first}}</a></p>
+    <p>{{name}} uses {{first}} candies. You have {{candies}} of them.</p>
+    <p>{% if baby == none %}
+            The {{first}} family has no baby. 
+        {% else %}
+            The {{first}} family has a baby <a href = "/{{baby}}">{{baby}}</a>
+        {% endif %}
+    </p>
+    <form action="{{name}}" method="post">
+      <p>You have 
+        <input type="number" name="new_count" value = "{{count}}" min="0"> {{name}}s
+      </p>
+      <button type="submit">Update</button>
+    </form>
+    
+{% endblock %}
