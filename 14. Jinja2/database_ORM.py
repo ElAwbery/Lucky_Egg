@@ -158,7 +158,6 @@ class ORM_object(object):
                 # and assigned UID value from the table           
                 finally:
                     object.__setattr__(self, column_name, foreign_object)
-            
             else:
                 object.__setattr__(self, column_name, attribute_value)
                 
@@ -215,7 +214,6 @@ def get_subclass_from_name(_class, name):
     for subclass in _class.__subclasses__():
         if subclass.__name__ == name:
             return subclass
-
 
 # The value_to_ORM_object function is the main interface between the application
 # code and the ORM. The application code does not use UIDs, those are internal
