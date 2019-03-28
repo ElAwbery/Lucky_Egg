@@ -1,0 +1,18 @@
+{% extends "pokemon_base.html" %}
+
+{% block head %}
+<link href="pokemon_page.css" rel="stylesheet" type="text/css"/>
+<title>{{name}}</title>
+{% endblock head %}
+
+{% block content %}
+<h1>{{name}}</h1>
+{{status_line}}
+<body>
+    <div class="container">
+        {# defines the area that child templates can fill #}
+        {% block stage %}{% endblock stage %}
+    </div>
+</body>
+{% endblock content %}
+    
