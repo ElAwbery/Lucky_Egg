@@ -72,6 +72,14 @@ Each of the tasks below corresponds to the file with the same number.
      - Added base template .html file with four child templates for pokemon species stages
      - Added function to render templates for pokemon species
      - Updated HTML variables in application code
+     
+15. Added tabular view:
+
+     - Updated template rendering function to include a tabular page view of all pokemon species in all families
+     - Added 'get all objects of a given class' functionality to ORM and separated UID_to_object method into a helper function
+     - Added an all_pokemon css stylesheet to the pokemon handler class
+     - Updated get_router and post_router request handling accordingly
+     - Removed status line attribute from the pokemon class and made it a template variable instead
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
 
