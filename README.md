@@ -7,11 +7,13 @@ This approach would be inefficient if my purpose was simply to build a web site.
 Eventually I intend to make a tutorial accompanying the project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete. 
 
 
+
 # Building the framework
 
 I started at a level just above a raw socket connection, using a SimpleHTTPrequestHandler from the Python server library. This parses the http packets into headers. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
 
 Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one that I now understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand the structure of the web app. 
+
 
 
 # The Pokemon Go Lucky Egg preparation app
@@ -25,6 +27,7 @@ One of the main tasks accomplished during a Lucky Egg timer is species' evolutio
 Normally players prepare for a Lucky Egg by looking through their Pokemon deck at their species counts and candies and working out which of their species they want to evolve. It can get confusing keeping track of candies and which species are ready to evolve: in the Pokemon Go app, Pokemon species are not ordered by family, so deciding whether or not to evolve a first stage or a second stage species, or whether to wait for more candies, may involve scrolling back and forth many times through several hundred species.
 
 The app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user will print.
+
 
  
 # System architecture
