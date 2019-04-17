@@ -66,10 +66,10 @@ https://docs.python.org/3/library/http.server.html
 ### 3. [Make a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
 
 Make a simple website to test the server can handle unique page requests: 
-    - Modify the request handler code to make a three page website. 
-    - Each page has its own url and displays its own unique text. To do this you can set up a dictionary mapping the page path names to their content. 
-    - Add links in the content for each page to both the other two pages.
-    - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return 'page not found' response. 
+ - Modify the request handler code to make a three page website. 
+ - Each page has its own url and displays its own unique text. To do this you can set up a dictionary mapping the page path names to their content. 
+ - Add links in the content for each page to both the other two pages.
+ - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return 'page not found' response. 
   
   
 4. Refactored the code to make page object classes separate from the server code
