@@ -8,6 +8,7 @@ Prior to starting this project in December 2018 I had no web development experie
 
 Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete. 
 
+//
 
 # Building the framework
 
