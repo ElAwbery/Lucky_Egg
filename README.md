@@ -6,10 +6,8 @@ This approach would be inefficient if my purpose was simply to build a web site.
 
 Prior to starting this project in December 2018 I had no web development experience other than occasionally writing a few lines of html. I started to learn Python in March 2018. After teaching myself the basic syntax (see my Python [practice repo](https://github.com/elawbery/Python-Practice)) I completed the EdX MIT 6.00.1x online [Introduction to Computer Science and programming](https://github.com/elawbery/MIT-6.00.1x) and 6.00.2x [Introduction to computational thinking and data science](https://github.com/ElAwbery/MIT-6.00.2x).
 
-Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete. 
-
+Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete.  
 <br>
-
 # Building the framework
 
 I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the http request at the http protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
@@ -42,7 +40,19 @@ Below is a short summary of each step in the project. Each step involves the add
 
 ## Bricks and mortar: building each block of the web framework  
  
-### 1. Python talks to the browser
+### 1. [Python talks to the browser](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
+Write code to display the body of an html file in a browser tab. 
+
+ - Write Python code to make an html file. This is stored locally. 
+ - Import the Python os and webbrowser libraries. 
+
+ The os.path module implements functions on pathnames. You can see the documentation here:
+ https://docs.python.org/3/library/os.path.html
+
+Use the os.path.abspath function to retrieve the full path to the stored html file.
+Use the webbrowser.open_new_tab function to show our stored html page in the browser.  
+
+I also wrote a couple of functions to take input from a user then make and store a new html file with the input. 
 
 2. Made a web server 
 
