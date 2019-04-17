@@ -57,16 +57,15 @@ Now we understand how to write to the browser from our code, we want to build a 
 
 You can read the http.server documentation here: 
 https://docs.python.org/3/library/http.server.html
-
-In Phase 1 we wrote an html form.  
-- Rewrite the html code to make boilerplate variables for an html page. 
+ 
+- Rewrite the html code we wrote in Phase 1. Turn it into boilerplate variables for an html page. 
 - Write a simple request handler using the built in MyHTTPRequestHandler class. The request handler should serve a GET request and construct an html page from the boilerplate variables and the path string.
 - Set up a TCPsocketserver (transmission control protocol), specify the port to serve and tell it to use your handler
  
 
+### 3. [Make a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
 
-
-3. Created a simple website in order to check that the server could handle requests for specified pages
+Created a simple website in order to check that the server could handle requests for specified pages
     - Modified the server code to make a three page website
     - Each of the three pages contains different text; each page has its own url 
     - Each page contains links to the other two pages
