@@ -38,7 +38,7 @@ file_path = 'file:///Users/Charlie/Documents/All%20my%20stuff/Learning%20/STEM/C
 webbrowser.open_new_tab(file_path)
 
 
-# ask the user for html content to turn into a file
+# make and save an html file from user input
 
 def make_file():
     """
@@ -54,7 +54,7 @@ def make_file():
     new_html_file.close()
     
         
-# ask the user for a string to insert into an html boilerplate
+# take a string from user input and insert it into html boilerplate, then make and save the html file
     
 def provide_html_template():
     """
