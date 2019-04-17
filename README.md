@@ -10,9 +10,9 @@ Eventually I intend to make a tutorial accompanying the project to facilitate ot
 
 # Building the framework
 
-I started at a level just above a raw socket connection, using a SimpleHTTPrequestHandler from the Python server library. This parses the http packets into headers. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
+I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the http request at the http protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
 
-Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one that I now understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand the structure of the web app. 
+Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand the structure of web frameworks. 
 
 
 
@@ -26,13 +26,13 @@ One of the main tasks accomplished during a Lucky Egg timer is species' evolutio
 
 Normally players prepare for a Lucky Egg by looking through their Pokemon deck at their species counts and candies and working out which of their species they want to evolve. It can get confusing keeping track of candies and which species are ready to evolve: in the Pokemon Go app, Pokemon species are not ordered by family, so deciding whether or not to evolve a first stage or a second stage species, or whether to wait for more candies, may involve scrolling back and forth many times through several hundred species.
 
-The app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user will print.
+My app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user can print.
 
 
  
 # System architecture
  
-The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with REACT. Finally I'll add the pdf generation functionality. 
+The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality. 
  
 
 Each of the tasks below corresponds to the file with the same number. 
