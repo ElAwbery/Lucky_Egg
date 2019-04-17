@@ -34,9 +34,11 @@ My app will make it easy to see which species belong together in a Pokemon famil
 The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality.
 
 Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.   
- 
 
-1. Established a connection with the browser 
+
+## Bricks and mortar: building each block of the web framework
+ 
+### 1. Python talks to the browser
 
 2. Made a web server 
 
