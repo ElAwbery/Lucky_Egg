@@ -25,7 +25,6 @@ The program stores the html string as a file on my computer.</p>
 first_page.write(html_page)
 first_page.close()
 
-
 # display an html page in a browser, given the file and the location on my Mac
 
 import os
@@ -36,7 +35,6 @@ import webbrowser
 
 file_path = 'file:///Users/Charlie/Documents/All%20my%20stuff/Learning%20/STEM/Computer%20Science/WebDev/Project%201%20understanding%20basics/first_page.html'
 webbrowser.open_new_tab(file_path)
-
 
 # make and save an html file from user input
 
@@ -53,7 +51,6 @@ def make_file():
     new_html_file.write(page_content)
     new_html_file.close()
     
-        
 # take a string from user input and insert it into html boilerplate, then make and save the html file
     
 def provide_html_template():
