@@ -13,14 +13,14 @@ Eventually I intend to make a tutorial accompanying this project to facilitate o
 
 I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the http request at the http protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
 
-Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies. 
+Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was Thisunecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies. 
 
 
 # The Pokemon Go Lucky Egg preparation app
 
 The end product will be a web app for Pokemon Go players. Players can set off a Lucky Egg timer which lasts for 30 minutes. While the Lucky Egg is activated, they accomplish a set of tasks. Figuring out the tasks in real time takes longer than the 30 minutes so players normally prepare beforehand to get the best value from their Lucky Egg. 
 
-This app will put together a paper sheet users can take into the field with them when they play Pokemon Go so they can tick off what needs to be done. 
+My app will put together a paper sheet users can take into the field with them when they play Pokemon Go so they can tick off what needs to be done. 
 
 One of the main tasks accomplished during a Lucky Egg timer is species' evolution. Pokemon species belong to families. A baby evolves into a first stage species, first stage to second stage, second to third. Not all species evolve, not all families have babies or second or third stages. Those species that do evolve require accumulation of a specified number of candies in order to do so. Different species need different amounts of their candy in order to evolve. Candies are the same across families: for example, a Squirtle is a first-stage Pokemon. Squirtle evolves into its second-stage, a Wartortle. Wartortle evolves into Blastoise. All of them use Squirtle candies.  
 
@@ -31,10 +31,10 @@ My app will make it easy to see which species belong together in a Pokemon famil
  
 # System architecture
  
-The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality. 
- 
+The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality.
 
-Each of the tasks below corresponds to the file with the same number. 
+Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.   
+ 
 
 1. Established a connection with the browser 
 
