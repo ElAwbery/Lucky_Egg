@@ -34,7 +34,7 @@ Below is a short summary of each step in the project. Each step involves the add
 <br>
 ## Bricks and mortar: building each block of the web framework  
  
-### 1. [Make a browser connection using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
+### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
 Write code to display the body of an html file in a browser tab. 
 
  - Write Python code to make an html file. This is stored locally. 
