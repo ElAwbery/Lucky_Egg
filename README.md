@@ -49,9 +49,9 @@ Each of the tasks below corresponds to the file with the same number.
   
 4. Refactored the code to make page object classes separate from the server code
 
-5. Wrote an HTML form
+5. Wrote an HTML form for user data entry
 
-6. Added web forms to the page classs
+6. Added web forms to the page class
 
 7. Added a POST method
     - Implemented the post method of the request handler class 
