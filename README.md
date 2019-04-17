@@ -8,6 +8,7 @@ Prior to starting this project in December 2018 I had no web development experie
 
 Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete. 
 
+<br>
 
 # Building the framework
 
@@ -15,6 +16,7 @@ I started at a level just above a raw socket connection, using the SimpleHTTPreq
 
 Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was Thisunecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies. 
 
+<br>
 
 # The Pokemon Go Lucky Egg preparation app
 
@@ -28,6 +30,7 @@ Normally players prepare for a Lucky Egg by looking through their Pokemon deck a
 
 My app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user can print.
 
+<br>
  
 # System architecture
  
