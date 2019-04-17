@@ -54,12 +54,13 @@ I also wrote a couple of functions to take input from a user then make and store
 Now we understand how to write to the browser from our code, we want to build a local server to do this for us, and to handle requests from the browser.
 
 - Import the Python http.server and socketserver libraries. 
-- You can read the http.server documentation here: 
+
+You can read the http.server documentation here: 
 https://docs.python.org/3/library/http.server.html
 
-- In Phase 1 we wrote an html form. Now rewrite the html code to make boilerplate variables for an html page. 
-- write a simple request handler using the built in MyHTTPRequestHandler class
-- the request handler serves a GET request and makes an html page using the our boilerplate variables and the path string
+In Phase 1 we wrote an html form.  
+- Rewrite the html code to make boilerplate variables for an html page. 
+- Write a simple request handler using the built in MyHTTPRequestHandler class. The request handler should serve a GET request and construct an html page from the boilerplate variables and the path string.
 - Set up a TCPsocketserver (transmission control protocol), specify the port to serve and tell it to use your handler
  
 
