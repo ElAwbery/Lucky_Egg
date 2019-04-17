@@ -41,13 +41,13 @@ Each of the tasks below corresponds to the file with the same number.
 
 2. Made a web server 
 
-3. Created a simple website
+3. Created a simple website in order to check that the server could handle requests for specified pages
     - Modified the server code to make a three page website
     - Each of the three pages contains different text; each page has its own url 
     - Each page contains links to the other two pages
     -up Added 404 error response to the handler
   
-4. Separated pages from the server (created page objects)
+4. Refactored the code to make page object classes separate from the server code
 
 5. Wrote an HTML form
 
