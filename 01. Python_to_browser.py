@@ -3,12 +3,14 @@
 """
 Created on Mon Dec 10 16:21:40 2018
 @author: ElAwbery
-"""
-'''
+
 Python talks directly to the browser. 
-'''
+"""
 
 # create an html file using Python
+
+# we used tripple quotes in case the html content includes quotes itself. 
+# Everything inside the tripple quotes including single quotes, is read as part of the string. 
 
 first_page = open('first_page.html', 'w')
         
@@ -19,8 +21,6 @@ html_page = """<html>
 The program stores the html string as a file on my computer.</p>
 </body>
 </html>"""
-# we used tripple quotes in case the html content includes quotes itself. 
-# Everything inside the tripple quotes including single quotes, is read as part of the string. 
 
 first_page.write(html_page)
 first_page.close()
