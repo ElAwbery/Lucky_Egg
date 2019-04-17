@@ -4,6 +4,8 @@ Lucky Egg is a self-orchestrated project in which I build a web framework from s
 
 This approach would be inefficient if my purpose was simply to build a web site. It is usual and sometimes necessary to accept complex tools as given: many people build good sites using code they don't fully understand. My purpose here is to understand how web development works systematically, not to learn tools to make products. 
 
+Prior to starting this project I had no web development experience other than occasionally writing a few lines of html. I started to learn Python in March 2018. After teaching myself the basic syntax (see my Python practice repo) I completed the EdX MIT 6.00.1x online [Introduction to Computer Science and programming]:github.com/elawbery/MIT-6.00.1x and 6.00.2x [Introduction to computational thinking and data science]:github.com/elawbery/MIT-6.00.2x.
+
 Eventually I intend to make a tutorial accompanying the project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete. 
 
 
