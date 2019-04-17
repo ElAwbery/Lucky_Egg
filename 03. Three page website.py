@@ -54,7 +54,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_error(http.HTTPStatus.NOT_FOUND, "Pokemon Not Found".format(self.path))
        
         
-# set up an socket server at PORT 80, specify the handler for the port, wait for a url request 
+# set up a socket server at PORT 80, specify the handler for the port, wait for a url request 
 
 with socketserver.TCPServer(("", PORT), MyHTTPRequestHandler) as httpd:
    print("serving at port", PORT)
