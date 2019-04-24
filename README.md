@@ -147,15 +147,17 @@ We want the server GET method to send page CSS on request. The point of this exe
  - Update the server GET method so that it will send the CSS page on request.
  - Make some styling decisions and implement them as part of the CSS page. You could make the status line a class attribute, add it as a variable to the HTML template and apply CSS to make a colorful 'updated' banner.
 
+## Phase 2: implementing an object relational map
+### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
+In Phase 1 we accessed our web page data via a dictionary which mapped page names to class objects. Eventually we will have a large amount of data. We want to keep the data storage separate from our application code so that we can update the code in future without interfering with the data collection.  
 
+ - Using MAMP with PHPMyAdmin set up a MySQL table. You can use [this SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) to make the table for the Python code to talk to. At this stage there is one table. For our code pursposes the name for both the database and table is Pokemon. 
+      
   <br>
    <br>
-    
-10. Wrote load and save methods
-     - Using MAMP with PHPMyAdmin set up a MySQL table
-     - The SQL dump to make a MySQL table for the Python code to talk to is included here
      - Write Python methods to construct a Pokemon object from a row and save new data to the database using SQL strings
      
+
 11. Refactoring code and normalizing the database:
     an exercise in separating the database operations from the application code. The ORM_object class has no code specific to        an application object type, and the application code must not know any information specific to the database. 
 
