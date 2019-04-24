@@ -60,7 +60,7 @@ https://docs.python.org/3/library/http.server.html
  
 - Rewrite the html code we wrote in Phase 1. Turn it into boilerplate variables for an html page. 
 - Write a simple request handler using the built in MyHTTPRequestHandler class. The request handler should serve a GET request and construct an html page from the boilerplate variables and the path string.
-- Set up a TCPsocketserver (transmission control protocol), specify the port to serve and tell it to use your handler
+- Set up a TCPsocketserver (transmission control protocol), specify the port to serve and tell it to use your handler.
  
 
 ### 3. [Make a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
@@ -75,29 +75,27 @@ Make a simple website to test the server can handle unique page requests:
 ### 4. [Separate out the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
 
 Define a page class:
-- The page class standardizes the formula for different types of web page
+- The page class standardizes the formula for different types of web page.
 - For the Lucky Egg app, the parent page class will be a pokemon object. For example, if Squirtle is a pokemon object, its web page will have the title 'Squirtle' and will tell the user about Squirtle. 
 - The pokemon class will initialize name, first_stage, second_stage and third_stage attributes. 
-- Write an update_candy_count method for the parent class and write a str method to retrieve the name of the pokemon object
+- Write an update_candy_count method for the parent class and write a str method to retrieve the name of the pokemon object.
 
 We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
 - Write three pokemon object subclasses: first_stage, second_stage and third_stage.
 - Write an html_body method for each subclass. It returns the html string for the body of that page type.
 
-All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count
-- Initialize the candy_count attribute in the first_stage class
+All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count.
+- Initialize the candy_count attribute in the first_stage class.
 
 Our GET request must be updated to get the correct html body for each page type:
 - Change the pokemon dictionary keys from path strings to pokemon object names. Eventually we will map names to objects. 
 - Re-write the pokemon dictionary values to call the required pokemon subclass html_body method.
- 
-
-Finally, make sure all the code is well documented to reflect the changes.
+- Finally, make sure all the code is well documented to reflect the changes.
 
 
 ### 5. [Write an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
 
-Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) and [here](https://en.wikipedia.org/wiki/Form_(HTML))
+Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) and [here](https://en.wikipedia.org/wiki/Form_(HTML)).
 
 The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually they want to update the species' count and the candy count.
 
