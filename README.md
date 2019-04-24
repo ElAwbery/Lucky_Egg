@@ -72,7 +72,27 @@ Make a simple website to test the server can handle unique page requests:
  - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return a 'page not found' response. 
   
 
-4. Refactored the code to make page object classes separate from the server code
+### 4. [Separate out the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
+
+Define a page class:
+- The page class standardizes the formula for different types of web page
+- For the Lucky Egg app, the parent page class will be a pokemon object. For example, if Squirtle is a pokemon object, its web page will have the title 'Squirtle' and will tell the user about Squirtle. 
+- The pokemon class will initialize name, first_stage, second_stage and third_stage attributes. 
+- Write an 'update_candy_count' method for the parent class and write a __str__ method to retrieve the name of the pokemon object
+
+We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unnique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
+- Write three pokemon object subclasses: first_stage, second_stage and third_stage.
+- Write an html_body method for each subclass. It returns the html string for the body of that page type.
+
+All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count:
+- Initialize the candy_count attribute in the first_stage class
+
+Our GET request must be updated to get the correct html body for each page type:
+- refactor the pokemon dictionary values to call the required pokemon subclass html_body method 
+
+Finally, make sure all the code is well documented to reflect the recent changes.
+
+
 
 
   <br>
