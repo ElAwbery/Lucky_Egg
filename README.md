@@ -71,10 +71,12 @@ Make a simple website to test the server can handle unique page requests:
  - Add links in the content for each page to both the other two pages.
  - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return a 'page not found' response. 
   
-  <br>
-   <br>
+
 4. Refactored the code to make page object classes separate from the server code
 
+
+  <br>
+   <br>
 5. Wrote an HTML form for user data entry
 
 6. Added web forms to the page class
@@ -104,7 +106,7 @@ Make a simple website to test the server can handle unique page requests:
     an exercise in separating the database operations from the application code. The ORM_object class has no code specific to        an application object type, and the application code must not know any information specific to the database. 
 
      - Wrote an object relational map to interface with the database
-     - Refactored the class structure into two sub-classes of the ORM_object class
+     - Refactored the application class structure into two sub-classes of the ORM_object class (species, family)
      - Normalized the database to reflect the new class structure
      
 12. Modularization:
