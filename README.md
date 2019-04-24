@@ -142,9 +142,9 @@ Here we will implement a simple templating system in order to understand how one
     
 We want the server GET method to send page CSS on request. The point of this exercise is to show that you can write CSS and understand how to add it into the application code. The HTML for each page will include a CSS page reference in its meta data which will generate a new GET request for the CSS.
 
-- Add a CSS page link to the header meta for HTML pages.
-- Update the server GET method so that it will send the CSS page on request.
-- Make some styling decisions and implement them as part of the CSS page. You could make the status line a class attribute, add it as a variable to the HTML template and apply CSS to make a colorful 'updated' banner.
+ - Add a CSS page link to the header meta for HTML pages.
+ - Update the server GET method so that it will send the CSS page on request.
+ - Make some styling decisions and implement them as part of the CSS page. You could make the status line a class attribute, add it as a variable to the HTML template and apply CSS to make a colorful 'updated' banner.
 
 
   <br>
