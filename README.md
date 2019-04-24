@@ -131,7 +131,6 @@ The Python documentation for working with streams is [here](https://docs.python.
 The [wiki.Python page](https://wiki.python.org/moin/Templating) has information about template writing in Python. A general resource for understanding templating is [here](https://allwebcodesign.com/website-templates.htm). You should be familiar with the principle of substitution (eg: substituting values for variables, or actual parameters for formal parameters) before attempting this step.  
 
 Here we will implement a simple templating system in order to understand how one works: 
-
 - Write templates and add them to the HTML constructor in each stage class. Use data attribute names for variables. 
 - Define the 'template_substitute' method for the pokemon parent class. This method takes an HTML string which is a template. It substitutes values for variables into the template and returns the template string with substitutions. Use the Python getattr method to get the required value for the variable. 
 - What if your template string starts with a variable? Make sure you include code to cover for this eventuality. 
