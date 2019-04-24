@@ -90,14 +90,14 @@ All the pokemon species in one evolutionary sequence share the same candy, so on
 Our GET request must be updated to get the correct html body for each page type:
 - refactor the pokemon dictionary values to call the required pokemon subclass html_body method 
 
-Finally, make sure all the code is well documented to reflect the recent changes.
+Finally, make sure all the code is well documented to reflect the changes.
 
 
+### 5. [Write an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
 
 
   <br>
    <br>
-5. Wrote an HTML form for user data entry
 
 6. Added web forms to the page class
 
