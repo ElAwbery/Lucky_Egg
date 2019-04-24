@@ -13,7 +13,7 @@ PORT = 80
 # Define the page class. Page classes standardize different page formulas. 
 
 class pokemon(object):
-    """Charlie
+    """
     A Pokemon object is used to construct the body of a web page representing
     that species
     """
