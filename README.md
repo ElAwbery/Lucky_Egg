@@ -95,6 +95,13 @@ Finally, make sure all the code is well documented to reflect the changes.
 
 ### 5. [Write an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
 
+Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) and [here](https://en.wikipedia.org/wiki/Form_(HTML))
+
+The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually they want to update the species' count and the candy count.
+
+- Write an HTML form for a pokemon species object with two input boxes, one for that species count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
+- Add an update button.
+- Integrate the form into the request handler class and test it displays correctly in the browser for its pokemon object page type
 
   <br>
    <br>
