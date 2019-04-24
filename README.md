@@ -119,21 +119,23 @@ We want the page type for each pokemon stage to display information about that p
 ### 7. [Add a POST method](https://github.com/ElAwbery/Lucky_Egg/blob/master/07.%20Write%20POST%20method.py)
 
 We want to add functionality for the web app user to update their pokemon species' counts and candy counts. 
-The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html). 
-- Implement the post method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counds). 
+The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html).
+
+- Implement the post method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counts). 
 - Catch errors with the built in 'send_error' method of Python's request handler class. 
 - The updated pokemon species page should display its status as 'Updated'.  
 
-    
-   
 
+### 8. [Write a template engine, add templates and a template method to the website](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
+
+
+    
   <br>
    <br>
-  
-8. Wrote a template engine, added templates and template method to site 
     - Added templates to the HTML constructor in each stage class
     - Defined a template substitution method for the pokemon parent class 
     - Cleaned up the HTML 
+   
   
 9. Added CSS
     - Added header meta for CSS to HTML pages
