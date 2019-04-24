@@ -126,7 +126,7 @@ The Python documentation for working with streams is [here](https://docs.python.
 - The updated pokemon species page should display its status as 'Updated'.  
 
 
-### 8. [Write a template engine, add templates and a template method to the website](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
+### 8. [Write a template engine, add templates and a template method to the website code](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
 
 
     
