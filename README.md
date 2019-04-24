@@ -133,20 +133,22 @@ The [wiki.Python page](https://wiki.python.org/moin/Templating) has information 
 Here we will implement a simple templating system in order to understand how one works:
  - Write templates and add them to the HTML constructor in each stage class. Use data attribute names for variables.
  - Define the 'template_substitute' method for the pokemon parent class. This method takes an HTML string which is a template.
- - It substitutes values for variables into the template and returns the template string with substitutions. Use the Python getattr method to get the required value for the variable.
+ - It substitutes values for variables into the template and returns the template string with substitutions. Use the Python 'getattr' method to get the required value for the variable.
  - What if your template string starts with a variable? Make sure you include code to cover for this eventuality.
  - The 'html_body' method in each stage class must return a template string complete with substitutions. It calls the 'template_substitute' method to get the finshed string.
+ 
 
+### 9. [CSS implementation](https://github.com/ElAwbery/Lucky_Egg/blob/master/09.%20Add%20CSS.py)
+    
+We want the server GET method to send page CSS on request. The point of this exercise is to show that you can write CSS and understand how to add it into the application code. The HTML for each page will include a CSS page reference in its meta data which will generate a new GET request for the CSS. 
 
+- Add a CSS page link to the header meta for HTML pages.
+- Update the server GET method so that it will send the CSS page on request.
+- Make some styling decisions and implement them as part of the CSS page. You could make the status line a class attribute, add it as a variable to the HTML template and apply CSS to make a colorful 'updated' banner.
+
+    
   <br>
    <br>
-  
-9. Added CSS
-    - Added header meta for CSS to HTML pages
-    - Added code to server GET method to send CSS on request
-    - Wrote simple CSS just to demonstrate that it works
-    - Added status_line to HTML for "Updated", as a thing to apply CSS to
-    (required minor restructuring of the HTML generation code)
     
 10. Wrote load and save methods
      - Using MAMP with PHPMyAdmin set up a MySQL table
