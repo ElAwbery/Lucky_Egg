@@ -80,7 +80,7 @@ Define a page class:
 - The pokemon class will initialize name, first_stage, second_stage and third_stage attributes. 
 - Write an 'update_candy_count' method for the parent class and write a __str__ method to retrieve the name of the pokemon object
 
-We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unnique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
+We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
 - Write three pokemon object subclasses: first_stage, second_stage and third_stage.
 - Write an html_body method for each subclass. It returns the html string for the body of that page type.
 
