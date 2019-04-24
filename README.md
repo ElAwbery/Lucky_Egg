@@ -88,7 +88,7 @@ All the pokemon species in one evolutionary sequence share the same candy, so on
 - Initialize the candy_count attribute in the first_stage class
 
 Our GET request must be updated to get the correct html body for each page type:
-- refactor the pokemon dictionary values to call the required pokemon subclass html_body method 
+- re-write the pokemon dictionary values to call the required pokemon subclass html_body method 
 
 Finally, make sure all the code is well documented to reflect the changes.
 
