@@ -106,7 +106,7 @@ The Lucky Egg app user wants to know how many of a pokemon species they have, an
 
 ### 6. [Add name_to_object method and web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
 
-Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
+Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data and turn it into HTML pages for the website incorporating our HTML forms. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
 
 - Re-write the pokemon dictionary so that its values are pokemon objects. It now maps pokemon names to objects. 
 - Write a 'name_to_object' method for the pokemon class. It will retrieve the stored pokemon object from its string name in the pokemon dictionary.
