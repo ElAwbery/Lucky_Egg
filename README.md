@@ -104,7 +104,7 @@ The Lucky Egg app user wants to know how many of a pokemon species they have, an
 - Integrate the form into the request handler class and test it displays correctly in the browser for its pokemon object page type.
 
 
-### 6. [Add web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
+### 6. [Add name_to_object method and web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
 
 Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
 
@@ -116,13 +116,19 @@ We want the page type for each pokemon stage to display information about that p
 - Add HTML forms to the 'html_body' methods for the pokemon stage subclasses.
 
 
+### 7. [Add a POST method](https://github.com/ElAwbery/Lucky_Egg/blob/master/07.%20Write%20POST%20method.py)
+
+We want to add functionality for the web app user to update their pokemon species' counts and candy counts. 
+The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html). 
+- Implement the post method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counds). 
+- Catch errors with the built in 'send_error' method of Python's request handler class. 
+- The updated pokemon species page should display its status as 'Updated'.  
+
+    
+   
 
   <br>
    <br>
-
-7. Added a POST method
-    - Implemented the post method of the request handler class 
-    - Client can now modify page class data attributes 
   
 8. Wrote a template engine, added templates and template method to site 
     - Added templates to the HTML constructor in each stage class
