@@ -78,13 +78,13 @@ Define a page class:
 - The page class standardizes the formula for different types of web page
 - For the Lucky Egg app, the parent page class will be a pokemon object. For example, if Squirtle is a pokemon object, its web page will have the title 'Squirtle' and will tell the user about Squirtle. 
 - The pokemon class will initialize name, first_stage, second_stage and third_stage attributes. 
-- Write an 'update_candy_count' method for the parent class and write a '\__str\__' method to retrieve the name of the pokemon object
+- Write an update_candy_count method for the parent class and write a str method to retrieve the name of the pokemon object
 
 We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
 - Write three pokemon object subclasses: first_stage, second_stage and third_stage.
 - Write an html_body method for each subclass. It returns the html string for the body of that page type.
 
-All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count:
+All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count
 - Initialize the candy_count attribute in the first_stage class
 
 Our GET request must be updated to get the correct html body for each page type:
