@@ -88,7 +88,9 @@ All the pokemon species in one evolutionary sequence share the same candy, so on
 - Initialize the candy_count attribute in the first_stage class
 
 Our GET request must be updated to get the correct html body for each page type:
-- re-write the pokemon dictionary values to call the required pokemon subclass html_body method 
+- Change the pokemon dictionary keys from path strings to pokemon object names. Eventually we will map names to objects. 
+- Re-write the pokemon dictionary values to call the required pokemon subclass html_body method.
+ 
 
 Finally, make sure all the code is well documented to reflect the changes.
 
@@ -99,14 +101,26 @@ Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML
 
 The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually they want to update the species' count and the candy count.
 
-- Write an HTML form for a pokemon species object with two input boxes, one for that species count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
+- Write an HTML form with two input boxes for a pokemon species object, one box for that species' count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
 - Add an update button.
-- Integrate the form into the request handler class and test it displays correctly in the browser for its pokemon object page type
+- Integrate the form into the request handler class and test it displays correctly in the browser for its pokemon object page type.
+
+
+### 6. [Add web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
+
+Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
+
+- Re-write the pokemon dictionary so that its values are pokemon objects. It now maps pokemon names to objects. 
+- Write a 'name_to_object' method for the pokemon class. It will retrieve the stored pokemon object from its string name in the pokemon dictionary.
+
+We want the page type for each pokemon stage to display information about that pokemon's evolutionary sequence, how many the user has in their Pokemon app and how many candies they have for that sequence of evolutions:
+
+- Add HTML forms to the 'html_body' methods for the pokemon stage subclasses.
+
+
 
   <br>
    <br>
-
-6. Added web forms to the page class
 
 7. Added a POST method
     - Implemented the post method of the request handler class 
