@@ -32,8 +32,9 @@ The web app is not yet finished. The end product will be a data entry app, with 
 
 Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.  
 <br>
-## Bricks and mortar: building each block of the web framework  
- 
+# Bricks and mortar: building each block of the web framework 
+
+## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
 Write code to display the body of an html file in a browser tab. 
 
