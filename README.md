@@ -180,11 +180,12 @@ from the dictionary and calls the ORM_object class to instantiate new objects.
 
 
 
-     - Refactored the application class structure into two sub-classes of the ORM_object class (species, family)
-     - Normalized the database to reflect the new class structure
+- Refactored the application class structure into two sub-classes of the ORM_object class (species, family)
+- Normalized the database to reflect the new class structure
      
-     Now add the load & store methods to the ORM_object class:
-     It should include the __load__ and __store__ methods for class objects in our application code. Assume that user defined types (classes) have identical table names in the database so that all
+Now add the load & store methods to the ORM_object class:
+It should include the __load__ and __store__ methods for class objects in our application code. 
+Assume that user defined types (classes) have identical table names in the database so that all
 object attribute values can be stored to and loaded from the database with generic code. 
   - Data attribute values stored in table rows are loaded using each object's unique ID.   
   
