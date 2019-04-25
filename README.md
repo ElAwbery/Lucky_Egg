@@ -230,7 +230,7 @@ I separated the server code from the application code into two modules. The [app
  
 <br>
      
-Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
+Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
 
 
