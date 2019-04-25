@@ -172,7 +172,7 @@ This step involved no new functionality. I refactored the code, implementing an 
 The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code stores and loads all attribute values:
  - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
  - Data attribute values stored in table rows are loaded using each object's unique ID.
- - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
+ - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I added an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
  
 In order to avoid repetition in the database I refactored the application class structure into two cross-referencing __ORM_obejct__ subclasses, __pokemon_family__ and __pokemon_species__.
 
@@ -206,28 +206,31 @@ I separated the server code from the application code into two modules. The [app
  - Additionally I separated out the [template engine](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/template.py) from the application module. It contains no application specific code. 
      
  
-  <br>
+### 13. [Prevented SQL injection attacks and added store on set](https://github.com/ElAwbery/Lucky_Egg/tree/master/13.%20Prevent%20SQL%20injection%20attacks)
+
+ - Added prepared cursor objects into the database_ORM module and used parameters to update table values.
+ - Integrated set and store functionality into the ORM code, replacing the store method of previous versions with a specialized setattr.  
+ - Updated the application code accordingly so that it no longer sets attributes.
+
+
+### 14. [Replaced home built template engine with Jinja2](https://github.com/ElAwbery/Lucky_Egg/tree/master/14.%20Jinja2)
+
+ - Added base template .html file with four child templates for pokemon species stages.
+ - Added function to render templates for pokemon species.
+ - Updated HTML variables in the application code.
+ 
+     
+### 15. [Added tabular view](https://github.com/ElAwbery/Lucky_Egg/tree/master/15.%20Tabular%20view)
+
+ - Updated template rendering function to include a tabular page view of all pokemon species in all families.
+ - Added 'get all objects of a given class' functionality to the ORM code and separated the __UID_to_object__ method out into a helper function.
+ - Added an all_pokemon CSS stylesheet to the pokemon handler class
+ - Updated __get_router__ and __post_router__ request handling accordingly
+ - Removed status line attribute from the pokemon class and made it a template variable instead
+ 
+        <br>
    <br>
      
-13. Prevented SQL injection attacks and added store on set:
-
-     - Added prepared cursor objects into the database_ORM and used parameters to update table values
-     - Integrated set and store functionality into the ORM, replacing the store method of previous versions with a specialized setattr 
-     - Updated application code so that it no longer sets attributes
-     
-14. Replaced home built template engine with Jinja2:
-
-     - Added base template .html file with four child templates for pokemon species stages
-     - Added function to render templates for pokemon species
-     - Updated HTML variables in application code
-     
-15. Added tabular view:
-
-     - Updated template rendering function to include a tabular page view of all pokemon species in all families
-     - Added 'get all objects of a given class' functionality to ORM and separated UID_to_object method into a helper function
-     - Added an all_pokemon css stylesheet to the pokemon handler class
-     - Updated get_router and post_router request handling accordingly
-     - Removed status line attribute from the pokemon class and made it a template variable instead
 
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
 
