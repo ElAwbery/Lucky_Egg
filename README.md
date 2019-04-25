@@ -172,7 +172,7 @@ This step involved no new functionality. I refactored the code, implementing an 
 The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code can be used to store and load all attribute values:
  - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
  - Data attribute values stored in table rows are loaded using each object's unique ID.
- - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an ID_to_object class dictionary that guarantees an object is loaded only once per interpreter session.
+ - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
  
 In order to avoid repetition in the database I refactored the class structure into two cross-referencing subclasses, __pokemon_family__ and __pokemon_species__. These are two subclasses of the __ORM_object__ class. 
 
@@ -183,14 +183,14 @@ In order to avoid repetition in the database I refactored the class structure in
  - Added a new HTML template variable for baby pokemon pages. (The previous code did not include the baby stage of Pokemon evolution sequences.)
  
 I normalized the database to reflect the new class structure:
- - Built two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. The __ORM_object__ code uses its subclass names to access database tables. 
- - Made column names in the tables identical to data attributes in the two ORM subclasses.
+ - Built two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. (The __ORM_object__ code uses its subclass names to access database tables.) 
+ - Made column names in the tables identical to the required data attributes of the two ORM subclasses.
  - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The store method updates table data with attribute values using the object's UID to find the relevant table row.
  
-I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only by the ORM_class. 
+I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only by the __ORM_object__ class. 
  - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID.
- - The __value_to_ORM_object__ helper function gets the UID for an ORM_object using a data attribute then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
- - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a family UID that is a foreign key. The evolution stages columns in the pokemon_family table reference individual species with a foreign key to the species' UID in the pokemon_species table. 
+ - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
+ - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table. 
 
 
   
