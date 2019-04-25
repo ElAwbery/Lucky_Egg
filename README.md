@@ -147,7 +147,7 @@ The point of this exercise was to write some CSS and understand how to add it in
  - Made some styling decisions and implemented them as part of the CSS page. 
  - I made the status line a class attribute, added it as a variable to the HTML template and applied CSS to make a colorful 'updated' banner.
 
-## Phase 2: implementing an object relational map
+## Phase 2: implementing an object relational map and MVC architecture
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
 In Phase 1 I accessed web page data via a dictionary that mapped page names to class objects. Eventually the web app will access a data collection of several hundred pokemon objects. This step separated data storage from my application code so that I could update the code in future without interfering with the collection and storage of data.  
 
@@ -212,7 +212,8 @@ I separated the server code from the application code into two modules. The [app
  - Integrated set and store functionality into the ORM code, replacing the store method of previous versions with a specialized setattr.  
  - Updated the application code accordingly so that it no longer sets attributes.
 
-
+ 
+## Phase 3: making the web app fully functional
 ### 14. [Replaced home built template engine with Jinja2](https://github.com/ElAwbery/Lucky_Egg/tree/master/14.%20Jinja2)
 
 My intention in each stage of this project is to learn the functionality of a part of the web framework, then replace it with an off-the-shelf program, understanding how it fits with the whole. In this step instead of augmenting my home-built template engine with branching options, I replaced it with the more powerful Jinja2:
@@ -220,9 +221,12 @@ My intention in each stage of this project is to learn the functionality of a pa
  - Added base template .html file with four child templates for pokemon species stages.
  - Added functionality to render templates for pokemon species.
  - Updated HTML variables in the application code.
- 
-     
+
+
 ### 15. [Added tabular view](https://github.com/ElAwbery/Lucky_Egg/tree/master/15.%20Tabular%20view)
+By now the Lucky Egg app shows the user a page for each of their pokemon species, with family relationships, pokemon count and candy count. The user can browse between species page views, but can't yet see all of their pokemon on one page. 
+
+This step builds a new page view. It shows a tabular view of all the pokemon species in the database in rows according to family stages. For example, Squirtle, Wartortle, Blastoise are all on one row and the baby column in that row is empty, because the Squirtle family does not have a baby pokemon. 
 
  - Updated template rendering function to include a tabular page view of all pokemon species in all families.
  - Added 'get all objects of a given class' functionality to the ORM code and separated the __UID_to_object__ method out into a helper function.
