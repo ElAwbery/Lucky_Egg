@@ -181,7 +181,7 @@ In order to avoid repetition in the database I refactored the class structure in
  - The __pokemon_species__ class keeps track of individual pokemon counts. Because the family class now tracked the species' stages, the __pokemon_species__ class no longer required separate stage subclasses.  
  - Added HTML template variables to a __get_html__ method in the __pokemon_species__ class. 
  - Removed the sub classes that now had no methods or attributes of their own. 
- - Added a new html template variable for baby pokemon pages. (The previous code did not include the baby stage of Pokemon evolution sequences.)
+ - Added a new HTML template variable for baby pokemon pages. (The previous code did not include the baby stage of Pokemon evolution sequences.)
  
 Normalized the database to reflect the new class structure:
  - Wrote two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. The __ORM_class__ code uses class names to access database tables. 
