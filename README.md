@@ -190,24 +190,24 @@ I normalized the database to reflect the new class structure:
 I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the __ORM_object__ scope. 
  - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID. The UIDs are not global (a family object might end up with the same UID as a species object) so the __ID_to_object__ dictionary uses both table name and UID for its keys. 
  - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
- - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table. 
+ - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table.
 
 
-  
+### 12. [Modularization:](https://github.com/ElAwbery/Lucky_Egg/tree/master/12.%20Modularization)
+
+After the refactoring in step 11 I could easily separate the program into a modular [MVC](https://en.wikipedia.org/wiki/Model–view–controller) architecture: 
+
+ - The [database_ORM module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/database_ORM.py) expresses the model.
+ - Separated the server code from the application code into two modules.
+ - The [application_code module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/application_code.py) constructs the web page view.
+  - Updated the application code to call the server and talk to it with an HTTPRequestHandler subclass, __pokemon_handler__.
+ - Wrote __get_router__ and __post_router__ methods for the __pokemon_handler__ subclass. These constitute the controller of the MVC architecture.
+- The web server no longer runs on loading, it is wrapped in a function called by the application code. In principle the [server module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/server.py) can now process any browser request and call the application's router methods.
+ - Additionally I separated out the [template engine](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/template.py) from the application module. It contains no application specific code. 
+     
+ 
   <br>
    <br>
-
-12. Modularization:
-
-     - Organized the program into an MVC architecture containing four modules
-     - The database_ORM expresses the model
-     - Application_code module constructs the web page view
-     - Application code updated to call the server and talk to it with an HTTPRequestHandler subclass
-     - get_router and post_router methods of the Handler subclass constitute the controller of the MVC architecture
-     - Server code is now separated from the application code into a server module
-     - In principle the server can process any browser request and call the application's router methods
-     - Web server no longer runs on loading, it is wrapped in a function called by application code
-     - Template engine separated from the application module and contains no application specific code
      
 13. Prevented SQL injection attacks and added store on set:
 
