@@ -70,7 +70,7 @@ Make a simple website to test the server can handle unique page requests:
  - Modify the request handler code to make a three page website. 
  - Each page has its own url and displays its own unique text. To do this you can set up a dictionary mapping the page path names to their content. 
  - Add links in the content for each page to both the other two pages.
- - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return a 'page not found' response. 
+ - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return a __page not found__ response. 
   
 
 ### 4. [Separate out the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
@@ -110,11 +110,11 @@ The Lucky Egg app user wants to know how many of a pokemon species they have, an
 Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data and turn it into HTML pages for the website incorporating our HTML forms. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
 
 - Re-write the pokemon dictionary so that its values are pokemon objects. It now maps pokemon names to objects. 
-- Write a 'name_to_object' method for the pokemon class. It will retrieve the stored pokemon object from its string name in the pokemon dictionary.
+- Write a __name_to_object__ method for the pokemon class. It will retrieve the stored pokemon object from its string name in the pokemon dictionary.
 
 We want the page type for each pokemon stage to display information about that pokemon's evolutionary sequence, how many the user has in their Pokemon app and how many candies they have for that sequence of evolutions:
 
-- Add HTML forms to the 'html_body' methods for the pokemon stage subclasses.
+- Add HTML forms to the __html_body__ methods for the pokemon stage subclasses.
 
 
 ### 7. [Add a POST method](https://github.com/ElAwbery/Lucky_Egg/blob/master/07.%20Write%20POST%20method.py)
@@ -123,7 +123,7 @@ We want to add functionality for the web app user to update their pokemon specie
 The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html).
 
 - Implement the post method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counts). 
-- Catch errors with the built in 'send_error' method of Python's request handler class. 
+- Catch errors with the built in __send_error__ method of Python's request handler class. 
 - The updated pokemon species page should display its status as 'Updated'.  
 
 
@@ -133,10 +133,10 @@ The [wiki.Python page](https://wiki.python.org/moin/Templating) has information 
 
 Here we will implement a simple templating system in order to understand how one works:
  - Write templates and add them to the HTML constructor in each stage class. Use data attribute names for variables.
- - Define the 'template_substitute' method for the pokemon parent class. This method takes an HTML string which is a template.
- - It substitutes values for variables into the template and returns the template string with substitutions. Use the Python 'getattr' method to get the required value for the variable.
+ - Define the __template_substitute__ method for the pokemon parent class. This method takes an HTML string which is a template.
+ - It substitutes values for variables into the template and returns the template string with substitutions. Use the Python __getattr__ method to get the required value for the variable.
  - What if your template string starts with a variable? Make sure you include code to cover for this eventuality.
- - The 'html_body' method in each stage class must return a template string complete with substitutions. It calls the 'template_substitute' method to get the finshed string.
+ - The __html_body__ method in each stage class must return a template string complete with substitutions. It calls the __template_substitute__ method to get the finshed string.
  
 
 ### 9. [CSS implementation](https://github.com/ElAwbery/Lucky_Egg/blob/master/09.%20Add%20CSS.py)
@@ -151,20 +151,47 @@ We want the server GET method to send page CSS on request. The point of this exe
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
 In Phase 1 we accessed our web page data via a dictionary which mapped page names to class objects. Eventually we will have a large amount of data. We want to keep the data storage separate from our application code so that we can update the code in future without interfering with the data collection.  
 
- - Using MAMP with PHPMyAdmin set up a MySQL table. You can use [this SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) to make the table for the Python code to talk to. At this stage there is one table. For our code pursposes the name for both the database and table is Pokemon. 
+ - Using PHPMyAdmin in MAMP set up a MySQL table. You can use [this SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) to make the table for the Python code to talk to. At this stage there is one table. The database name is Pokemon. The columns in the table match our pokemon class data attributes. 
+ 
+[Python MySql developer guide](https://dev.mysql.com/doc/connector-python/en/)
+[SQL tutorial](http://www.sqltutorial.org)
       
+  - Import the Python libraries __importlib__ and __mysql.connector__
+  - Write a __load__ function. It will construct a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name. The function must return a pokemon species object. 
+  - Write a __save_to_database__ function. It takes a pokemon species object as argument and saves its data attributes to a table row. 
+  - Which parts of our previous code are now dead? Remove them. 
+
+    
+### 11. [Refactor the code and normalize the database](https://github.com/ElAwbery/Lucky_Egg/blob/master/11.ii%20Refactoring%20code%20to%20normalize%20database.py)
+
+This step involves no new functionality. We will refactor our code to use an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping). This is an exercise in separating our database operations from the application code. In principle we want to build an interface with our database that has no application specific code. Our application code must not know any information specific to the database. 
+
+ - Write an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code. 
+
+     
   <br>
    <br>
-     - Write Python methods to construct a Pokemon object from a row and save new data to the database using SQL strings
-     
+  
+Cross references between database tables using foreign keys could lead to 
+multiple loads of one object. To avoid this the ORM_object class keeps an 
+ID_to_object dictionary that guarantees an object is loaded only once per 
+interpreter session. The value_to_ORM_object helper function fetches objects
+from the dictionary and calls the ORM_object class to instantiate new objects. 
 
-11. Refactoring code and normalizing the database:
-    an exercise in separating the database operations from the application code. The ORM_object class has no code specific to        an application object type, and the application code must not know any information specific to the database. 
 
-     - Wrote an object relational map to interface with the database
+
      - Refactored the application class structure into two sub-classes of the ORM_object class (species, family)
      - Normalized the database to reflect the new class structure
      
+     Now add the load & store methods to the ORM_object class:
+     It should include the __load__ and __store__ methods for class objects in our application code. Assume that user defined types (classes) have identical table names in the database so that all
+object attribute values can be stored to and loaded from the database with generic code. 
+  - Data attribute values stored in table rows are loaded using each object's unique ID.   
+  
+The store method updates table data with attribute values using the object's 
+UID to find the relevant table row.
+
+
 12. Modularization:
 
      - Organized the program into an MVC architecture containing four modules
