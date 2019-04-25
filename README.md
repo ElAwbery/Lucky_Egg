@@ -149,9 +149,9 @@ The point of this exercise was to write some CSS and understand how to add it in
 
 ## Phase 2: implementing an object relational map
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
-In Phase 1 I accessed web page data via a dictionary which mapped page names to class objects. Eventually I will have a large amount of data. In this step I separated the data storage from my application code so that I could update the code in future without interfering with the data collection.  
+In Phase 1 I accessed web page data via a dictionary which mapped page names to class objects. Eventually the web app will access a dataset of several hundred pokemon objects. This step separated data storage from my application code so that I could update the code in future without interfering with the collection and storage of data.  
 
- - Using PHPMyAdmin in MAMP set up a MySQL table. Made a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) for the table for future reference
+ - Using PHPMyAdmin in MAMP I created a MySQL table. Made a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) for the table for future reference.
  - At this stage there was one table. The database name was Pokemon. The columns in the table matched the pokemon class data attributes. 
  
 Some tutorials I found helpful: 
