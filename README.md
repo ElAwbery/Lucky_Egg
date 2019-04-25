@@ -215,8 +215,10 @@ I separated the server code from the application code into two modules. The [app
 
 ### 14. [Replaced home built template engine with Jinja2](https://github.com/ElAwbery/Lucky_Egg/tree/master/14.%20Jinja2)
 
+My intention in each stage of this project is to learn the functionality of a part of the web framework, then replace it with an off-the-shelf program, understanding how it fits with the whole. In this step instead of augmenting my home-built template engine with branching options, I replaced it with the more powerful Jinja2:
+
  - Added base template .html file with four child templates for pokemon species stages.
- - Added function to render templates for pokemon species.
+ - Added functionality to render templates for pokemon species.
  - Updated HTML variables in the application code.
  
      
