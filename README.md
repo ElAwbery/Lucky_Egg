@@ -156,7 +156,7 @@ In Phase 1 I accessed web page data via a dictionary which mapped page names to 
  
 Some tutorials I found helpful: 
  
-[Python MySql developer guide](https://dev.mysql.com/doc/connector-python/en/)
+[Python MySql developer guide](https://dev.mysql.com/doc/connector-python/en/)\
 [SQL tutorial](http://www.sqltutorial.org)
       
   - Imported the Python libraries __importlib__ and __mysql.connector__
