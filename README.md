@@ -149,14 +149,14 @@ The point of this exercise was to write some CSS and understand how to add it in
 
 ## Phase 2: implementing an object relational map
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
-In Phase 1 I accessed web page data via a dictionary which mapped page names to class objects. Eventually the web app will access a dataset of several hundred pokemon objects. This step separated data storage from my application code so that I could update the code in future without interfering with the collection and storage of data.  
+In Phase 1 I accessed web page data via a dictionary that mapped page names to class objects. Eventually the web app will access a data collection of several hundred pokemon objects. This step separated data storage from my application code so that I could update the code in future without interfering with the collection and storage of data.  
 
  - Using PHPMyAdmin in MAMP I created a MySQL table. Made a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) for the table for future reference.
  - At this stage there was one table. The database name was Pokemon. The columns in the table matched the pokemon class data attributes. 
  
 Some tutorials I found helpful: 
  
-[Python MySql developer guide](https://dev.mysql.com/doc/connector-python/en/)\
+[Python MySQL developer guide](https://dev.mysql.com/doc/connector-python/en/)\
 [SQL tutorial](http://www.sqltutorial.org)
       
   - Imported the Python libraries __importlib__ and __mysql.connector__
@@ -169,7 +169,7 @@ Some tutorials I found helpful:
 
 This step involved no new functionality. I refactored the code, implementing an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping) This was an exercise in separating out database operations from the application code. In principle I wanted to build an interface with the database that had no application specific code. The application code also must not know any information specific to the database. 
 
-The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code can be used to store and load all attribute values:
+The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code stores and loads all attribute values:
  - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
  - Data attribute values stored in table rows are loaded using each object's unique ID.
  - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
@@ -187,8 +187,8 @@ I normalized the database to reflect the new class structure:
  - Made column names in the tables identical to the required data attributes of the two ORM subclasses.
  - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The store method updates table data with attribute values using the object's UID to find the relevant table row.
  
-I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only by the __ORM_object__ class. 
- - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID.
+I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the __ORM_object__ scope. 
+ - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID. The UIDs are not global (a family object might end up with the same UID as a species object) so the __ID_to_object__ dictionary uses both table name and UID for its keys. 
  - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
  - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table. 
 
