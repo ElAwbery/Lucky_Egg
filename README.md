@@ -228,10 +228,8 @@ I separated the server code from the application code into two modules. The [app
  - Updated __get_router__ and __post_router__ request handling accordingly
  - Removed status line attribute from the pokemon class and made it a template variable instead
  
-        <br>
-   <br>
+<br>
      
-
 Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design, and code review. 
 
 
