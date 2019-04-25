@@ -174,7 +174,7 @@ The ORM_object code assumes that user defined types (classes) have identical tab
  - Data attribute values stored in table rows are loaded using each object's unique ID.
  - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
  
-In order to avoid repetition in the database I refactored the class structure into two cross-referencing subclasses, __pokemon_family__ and __pokemon_species__. These are two subclasses of the __ORM_object__ class. 
+In order to avoid repetition in the database I refactored the application class structure into two cross-referencing __ORM_obejct__ subclasses, __pokemon_family__ and __pokemon_species__.
 
  - The __pokemon_family__ class keeps track of candy counts and family members which are __pokemon_species__ objects. 
  - The __pokemon_species__ class keeps track of individual pokemon counts. Because the family class now tracks the species' stages, the __pokemon_species__ class no longer requires separate stage subclasses.  
@@ -184,7 +184,7 @@ In order to avoid repetition in the database I refactored the class structure in
  
 I normalized the database to reflect the new class structure:
  - Built two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. (The __ORM_object__ code uses its subclass names to access database tables.) 
- - Made column names in the tables identical to the required data attributes of the two ORM subclasses.
+ - Made column names in the tables identical to the required data attributes of the two __ORM_object__ subclasses.
  - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The store method updates table data with attribute values using the object's UID to find the relevant table row.
  
 I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the __ORM_object__ scope. 
