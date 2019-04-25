@@ -36,41 +36,39 @@ Below is a short summary of each step in the project. Each step involves the add
 
 ## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
-Write code to display the body of an html file in a browser tab. 
+Wrote code to display the body of an html file in a browser tab. 
 
- - Write Python code to make an html file. This is stored locally. 
- - Import the Python os and webbrowser libraries. 
+ - Wrote Python code to make an html file. This is stored locally. 
+ - Imported the Python os and webbrowser libraries. 
 
- The os.path module implements functions on pathnames. You can see the documentation here:
- https://docs.python.org/3/library/os.path.html
+ The os.path module implements functions on pathnames. The documentation is [here.](https://docs.python.org/3/library/os.path.html)
 
-Use the os.path.abspath function to retrieve the full path to the stored html file.
-Use the webbrowser.open_new_tab function to show our stored html page in the browser.  
+Used the os.path.abspath function to retrieve the full path to the stored html file.
+Used the webbrowser.open_new_tab function to show the stored html page in the browser.  
 
 I also wrote a couple of functions to take input from a user then make and store a new html file with the input. 
 
 
-### 2. [Write a local web server to handle http requests](https://github.com/ElAwbery/Lucky_Egg/blob/master/02.%20Server.py)
+### 2. [Wrote a local web server to handle http requests](https://github.com/ElAwbery/Lucky_Egg/blob/master/02.%20Server.py)
 
-Now we understand how to write to the browser from our code, we want to build a local server to do this for us, and to handle requests from the browser.
+Once I understood how to write to the browser from my code, I wanted to build a local server to do this for me, and to handle requests from the browser.
 
-- Import the Python http.server and socketserver libraries. 
+- Imported the Python http.server and socketserver libraries. 
 
-You can read the http.server documentation here: 
-https://docs.python.org/3/library/http.server.html
+The http.server documentation [here.](https://docs.python.org/3/library/http.server.html)
  
-- Rewrite the html code we wrote in Phase 1. Turn it into boilerplate variables for an html page. 
-- Write a simple request handler using the built in MyHTTPRequestHandler class. The request handler should serve a GET request and construct an html page from the boilerplate variables and the path string.
-- Set up a TCPsocketserver (transmission control protocol), specify the port to serve and tell it to use your handler.
+- Rewrote the HTML code from step 1. Turned it into boilerplate variables for an HTML page. 
+- Wrote a simple request handler using the built in MyHTTPRequestHandler class. The request handler serves a GET request and constructs an HTML page from the boilerplate variables and the path string.
+- Set up a TCPsocketserver (transmission control protocol), specifying the port to serve and passed the handler class to it.
  
 
-### 3. [Make a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
+### 3. [Made a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
 
-Make a simple website to test the server can handle unique page requests: 
- - Modify the request handler code to make a three page website. 
- - Each page has its own url and displays its own unique text. To do this you can set up a dictionary mapping the page path names to their content. 
- - Add links in the content for each page to both the other two pages.
- - Add a 404 error response to the request handler. If the browser asks for any page other than your three known page names, your code should return a __page not found__ response. 
+Made a simple website to test the server could handle unique page requests: 
+ - Modified the request handler code to make a three page website. 
+ - Each page has its own url and displays its own unique text. To do this I set up a dictionary mapping the page path names to their content. 
+ - Added links in the content for each page to both the other two pages.
+ - Added a 404 error response to the request handler. If the browser asks for any page other than the three known page names, the code returns a __page not found__ response. 
   
 
 ### 4. [Separate out the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
