@@ -140,57 +140,62 @@ In this step I implemented a simple templating system in order to understand how
 
 ### 9. [CSS implementation](https://github.com/ElAwbery/Lucky_Egg/blob/master/09.%20Add%20CSS.py)
     
-We want the server GET method to send page CSS on request. The point of this exercise is to show that you can write CSS and understand how to add it into the application code. The HTML for each page will include a CSS page reference in its meta data which will generate a new GET request for the CSS.
+The point of this exercise was to write some CSS and understand how to add it into the application code. I wanted the server __GET__ method to send page CSS on request. The HTML for each page should include a CSS page reference in its meta data which will generate a new GET request for the CSS.
 
- - Add a CSS page link to the header meta for HTML pages.
- - Update the server GET method so that it will send the CSS page on request.
- - Make some styling decisions and implement them as part of the CSS page. You could make the status line a class attribute, add it as a variable to the HTML template and apply CSS to make a colorful 'updated' banner.
+ - Added a CSS page link to the header meta for HTML pages.
+ - Updated the server GET method so that it sends the CSS page on request.
+ - Made some styling decisions and implemented them as part of the CSS page. 
+ - I made the status line a class attribute, added it as a variable to the HTML template and applied CSS to make a colorful 'updated' banner.
 
 ## Phase 2: implementing an object relational map
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
-In Phase 1 we accessed our web page data via a dictionary which mapped page names to class objects. Eventually we will have a large amount of data. We want to keep the data storage separate from our application code so that we can update the code in future without interfering with the data collection.  
+In Phase 1 I accessed web page data via a dictionary which mapped page names to class objects. Eventually I will have a large amount of data. In this step I separated the data storage from my application code so that I could update the code in future without interfering with the data collection.  
 
- - Using PHPMyAdmin in MAMP set up a MySQL table. You can use [this SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) to make the table for the Python code to talk to. At this stage there is one table. The database name is Pokemon. The columns in the table match our pokemon class data attributes. 
+ - Using PHPMyAdmin in MAMP set up a MySQL table. Made a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) for the table for future reference
+ - At this stage there was one table. The database name was Pokemon. The columns in the table matched the pokemon class data attributes. 
+ 
+Some tutorials I found helpful: 
  
 [Python MySql developer guide](https://dev.mysql.com/doc/connector-python/en/)
 [SQL tutorial](http://www.sqltutorial.org)
       
-  - Import the Python libraries __importlib__ and __mysql.connector__
-  - Write a __load__ function. It will construct a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name. The function must return a pokemon species object. 
-  - Write a __save_to_database__ function. It takes a pokemon species object as argument and saves its data attributes to a table row. 
-  - Which parts of our previous code are now dead? Remove them. 
+  - Imported the Python libraries __importlib__ and __mysql.connector__
+  - Wrote a __load__ function. It constructs a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name. The function returns a pokemon species object. 
+  - Wrote a __save_to_database__ function. It takes a pokemon species object as argument and saves its data attributes to a table row. 
+  - Removed dead code, including the pokemon dictionary. 
 
     
-### 11. [Refactor the code and normalize the database](https://github.com/ElAwbery/Lucky_Egg/blob/master/11.ii%20Refactoring%20code%20to%20normalize%20database.py)
+### 11. [Refactored the code and normalized the database](https://github.com/ElAwbery/Lucky_Egg/blob/master/11.ii%20Refactoring%20code%20to%20normalize%20database.py)
 
-This step involves no new functionality. We will refactor our code to use an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping). This is an exercise in separating our database operations from the application code. In principle we want to build an interface with our database that has no application specific code. Our application code must not know any information specific to the database. 
+This step involved no new functionality. I refactored the code to use an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping). This was an exercise in separating out database operations from the application code. In principle I wanted to build an interface with the database that had no application specific code. The application code also must not know any information specific to the database. 
 
- - Write an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code. 
+The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means that all object attribute values can be stored to and loaded from the database with generic code:
+ - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
+ - Data attribute values stored in table rows are loaded using each object's unique ID.
+ - Cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote the an ID_to_object class dictionary that guarantees an object is loaded only once per interpreter session.
+ - The __value_to_ORM_object__ helper function fetches objects from the dictionary and calls the ORM_object class to instantiate new objects.
+ 
+In order to avoid repetition in the database I refactored the class structure into two cross-referencing subclasses, __pokemon_family__ and __pokemon_species__. These are two subclasses of the __ORM_object__ class. 
 
-     
+ - The __pokemon_family__ class keeps track of candy counts and family members which are pokemon_species objects. 
+ - The __pokemon_species__ class keeps track of individual pokemon counts. Because the family class now tracked the species' stages, the __pokemon_species__ class no longer required separate stage subclasses.  
+ - Added HTML template variables to a __get_html__ method in the __pokemon_species__ class. 
+ - Removed the sub classes that now had no methods or attributes of their own. 
+ - Added a new html template variable for baby pokemon pages. (The previous code did not include the baby stage of Pokemon evolution sequences.)
+ 
+Normalized the database to reflect the new class structure:
+ - Wrote two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. The __ORM_class__ code uses class names to access database tables. 
+ - Column names in the tables are identical to data attributes in the respective ORM subclasses.
+ - Added the __load__ and __store__ methods for class objects (previously written in the application code) into the __ORM_object__ class. The store method updates table data with attribute values using the object's UID to find the relevant table row.
+ 
+I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for pokemon species objects and pokemon family objects. The application code does not know any UIDs, these are specific to the database and used only by the ORM_class.
+ - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID.
+ - Families in the database should know which species are family members and individual species should know which family they belong to. The family column in the pokemon_species table now contains a family UID that is a foreign key. The pokemon stages columns in the pokemon_family table have foreign key constraints to individual species' UIDs in the pokemon_species table. 
+ - Added a __value_to_ORM_object__ function to interface between the application class code and the ORM_class. This function first gets the UID for the ORM_object using a data attribute, then retrieves the ORM_object from the class dictionary using a UID or calls ORM_object class to instantiate a new object if the object is not already in the dictionary. 
+
+  
   <br>
    <br>
-  
-Cross references between database tables using foreign keys could lead to 
-multiple loads of one object. To avoid this the ORM_object class keeps an 
-ID_to_object dictionary that guarantees an object is loaded only once per 
-interpreter session. The value_to_ORM_object helper function fetches objects
-from the dictionary and calls the ORM_object class to instantiate new objects. 
-
-
-
-- Refactored the application class structure into two sub-classes of the ORM_object class (species, family)
-- Normalized the database to reflect the new class structure
-     
-Now add the load & store methods to the ORM_object class:
-It should include the __load__ and __store__ methods for class objects in our application code. 
-Assume that user defined types (classes) have identical table names in the database so that all
-object attribute values can be stored to and loaded from the database with generic code. 
-  - Data attribute values stored in table rows are loaded using each object's unique ID.   
-  
-The store method updates table data with attribute values using the object's 
-UID to find the relevant table row.
-
 
 12. Modularization:
 
