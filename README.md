@@ -200,7 +200,7 @@ After the refactoring in step 11 I could easily reorganize the program into a mo
 The [database_ORM module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/database_ORM.py) expresses the model.
 
 I separated the server code from the application code into two modules. The [application_code module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/application_code.py) constructs the web page view:
- - Updated the application code to call the server and talk to it with an HTTPRequestHandler subclass, __pokemon_handler__.
+ - Updated the application code to call the server and talk to it with __pokemon_handler__, an HTTPRequestHandler subclass.
  - Wrote __get_router__ and __post_router__ methods for the __pokemon_handler__ subclass. These constitute the controller of the MVC architecture.
 - Wrapped the web server in a function so that it no longer runs on loading. The server is now called by the application code. In principle the [server module](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/server.py) can now process any browser request and call the application's router methods.
  - Additionally I separated out the [template engine](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/template.py) from the application module. It contains no application specific code. 
