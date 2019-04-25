@@ -271,8 +271,8 @@ class PokemonHandler(http.server.SimpleHTTPRequestHandler):
  </body>
 </html>'''
 
-    # Pokemon_dictionary, in previous version, is now replaced by database
-    # Handler name_to_object method replaced by global load function
+    # Pokemon_dictionary, in previous version, is now replaced by global 
+    # load function
 
     def parse_http_arguments(self, string):
         """Takes a single string of user input from an HTML form
