@@ -169,7 +169,7 @@ Some tutorials I found helpful:
 
 This step involved no new functionality. I refactored the code, implementing an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping) This was an exercise in separating out database operations from the application code. In principle I wanted to build an interface with the database that had no application specific code. The application code also must not know any information specific to the database. 
 
-The ORM_object code assumed that user defined types (classes) had identical table names in the database. This meant generic code could be used to store and load all attribute values:
+The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code can be used to store and load all attribute values:
  - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
  - Data attribute values stored in table rows are loaded using each object's unique ID.
  - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I wrote an ID_to_object class dictionary that guarantees an object is loaded only once per interpreter session.
