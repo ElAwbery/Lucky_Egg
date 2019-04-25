@@ -71,70 +71,71 @@ Made a simple website to test the server could handle unique page requests:
  - Added a 404 error response to the request handler. If the browser asks for any page other than the three known page names, the code returns a __page not found__ response. 
   
 
-### 4. [Separate out the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
+### 4. [Separated the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
 
-Define a page class:
+Defined a page class:
 - The page class standardizes the formula for different types of web page.
-- For the Lucky Egg app, the parent page class will be a pokemon object. For example, if Squirtle is a pokemon object, its web page will have the title 'Squirtle' and will tell the user about Squirtle. 
-- The pokemon class will initialize name, first_stage, second_stage and third_stage attributes. 
-- Write an update_candy_count method for the parent class and write a str method to retrieve the name of the pokemon object.
+- For the Lucky Egg app, the parent page class is a pokemon object. For example, if Squirtle is a pokemon object, its web page will have the title 'Squirtle' and will tell the user about Squirtle. 
+- The pokemon class initializes name, first_stage, second_stage and third_stage attributes. 
+- Wrote an update_candy_count method for the parent class and  a __str__ method to retrieve the name of the pokemon object.
 
-We need subclasses for different page types because each pokemon species stage has distinct characteristics. For example, we need a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
-- Write three pokemon object subclasses: first_stage, second_stage and third_stage.
-- Write an html_body method for each subclass. It returns the html string for the body of that page type.
+The class structure needed subclasses for different page types because each pokemon species stage has distinct characteristics. For example, it required a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
+- Wrote three pokemon object subclasses: first_stage, second_stage and third_stage.
+- Wrote an html_body method for each subclass. It returns the html string for the body of that page type.
 
-All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object will keep track of the candy count.
-- Initialize the candy_count attribute in the first_stage class.
+All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object keeps track of the candy count.
+- Initialized the candy_count attribute in the first_stage class.
 
-Our GET request must be updated to get the correct html body for each page type:
-- Change the pokemon dictionary keys from path strings to pokemon object names. Eventually we will map names to objects. 
-- Re-write the pokemon dictionary values to call the required pokemon subclass html_body method.
-- Finally, make sure all the code is well documented to reflect the changes.
+Updated the GET request to get the correct html body for each page type:
+- Changed the pokemon dictionary keys from path strings to pokemon object names. Eventually I will map names to objects. 
+- Re-wrote the pokemon dictionary values to call the required pokemon subclass __html_body__ method.
+- Documented the code in detail to reflect the changes.
 
 
-### 5. [Write an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
+### 5. [Wrote an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
 
 Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) and [here](https://en.wikipedia.org/wiki/Form_(HTML)).
 
-The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually they want to update the species' count and the candy count.
+The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually I will add functionality to update the species' count and the candy count.
 
-- Write an HTML form with two input boxes for a pokemon species object, one box for that species' count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
-- Add an update button.
-- Integrate the form into the request handler class and test it displays correctly in the browser for its pokemon object page type.
-
-
-### 6. [Add name_to_object method and web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
-
-Our pokemon dictionary values are becoming unwieldy. Now that we have an object oriented architecture, our class structure can keep track of all our user's pokemon data and turn it into HTML pages for the website incorporating our HTML forms. We need only refer to the pokemon object from outside the class. In order to do so, we want to be able to use our page name (the name of the pokemon species) from the browser to get all the required pokemon data:
-
-- Re-write the pokemon dictionary so that its values are pokemon objects. It now maps pokemon names to objects. 
-- Write a __name_to_object__ method for the pokemon class. It will retrieve the stored pokemon object from its string name in the pokemon dictionary.
-
-We want the page type for each pokemon stage to display information about that pokemon's evolutionary sequence, how many the user has in their Pokemon app and how many candies they have for that sequence of evolutions:
-
-- Add HTML forms to the __html_body__ methods for the pokemon stage subclasses.
+- Wrote an HTML form with two input boxes for a pokemon species object, one box for that species' count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
+- Added an update button.
+- Integrated the form into the request handler class and tested it displayed correctly in the browser for its pokemon object page type.
 
 
-### 7. [Add a POST method](https://github.com/ElAwbery/Lucky_Egg/blob/master/07.%20Write%20POST%20method.py)
+### 6. [Added name_to_object method and web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
 
-We want to add functionality for the web app user to update their pokemon species' counts and candy counts. 
+The pokemon dictionary values were becoming unwieldy. Now that I have an object oriented architecture, the class structure can keep track of all the user's pokemon data and turn it into HTML pages for the website using HTML forms. The code outside the class need only refer to the pokemon object. In order to implement thta I wanted to use the web page name (the name of the pokemon species) from the browser to get all the required pokemon data:
+
+- Re-wrote the pokemon dictionary so that its values were pokemon objects. It now maps pokemon names to objects. 
+- Wrote a __name_to_object__ method for the pokemon class. It retrieves the stored pokemon object from its string name in the pokemon dictionary.
+
+I wanted the page type for each pokemon stage to display information about that pokemon's evolutionary sequence, how many the user has in their Pokemon app and how many candies they have for that sequence of evolutions:
+
+- Added HTML forms to the __html_body__ methods for the pokemon stage subclasses.
+
+
+### 7. [Added a POST method](https://github.com/ElAwbery/Lucky_Egg/blob/master/07.%20Write%20POST%20method.py)
+
+This step added functionality for the web app user to update their pokemon species' counts and candy counts. 
+
 The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html).
 
-- Implement the post method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counts). 
-- Catch errors with the built in __send_error__ method of Python's request handler class. 
-- The updated pokemon species page should display its status as 'Updated'.  
+- Implemented the __post__ method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counts). 
+- Caught errors using the built in __send_error__ method of Python's request handler class. 
+- The updated pokemon species page now displays its status as 'Updated'.  
 
 
-### 8. [Write a template engine, add templates and a template method to the website code](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
+### 8. [Wrote a template engine, added templates and a template method to the website code](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
 
-The [wiki.Python page](https://wiki.python.org/moin/Templating) has information about template writing in Python. A general resource for understanding templating is [here](https://allwebcodesign.com/website-templates.htm). You should be familiar with the principle of substitution (eg: substituting values for variables, or actual parameters for formal parameters) before attempting this step.  
+The [wiki.Python page](https://wiki.python.org/moin/Templating) has information about template writing in Python. A general resource for understanding templating is [here](https://allwebcodesign.com/website-templates.htm). 
 
-Here we will implement a simple templating system in order to understand how one works:
- - Write templates and add them to the HTML constructor in each stage class. Use data attribute names for variables.
- - Define the __template_substitute__ method for the pokemon parent class. This method takes an HTML string which is a template.
- - It substitutes values for variables into the template and returns the template string with substitutions. Use the Python __getattr__ method to get the required value for the variable.
- - What if your template string starts with a variable? Make sure you include code to cover for this eventuality.
- - The __html_body__ method in each stage class must return a template string complete with substitutions. It calls the __template_substitute__ method to get the finshed string.
+In this step I implemented a simple templating system in order to understand how one works:
+ - Wrote templates and added them to the HTML constructor in each stage class. Used data attribute names for variables.
+ - Defined the __template_substitute__ method for the pokemon parent class. This method takes an HTML string which is a template.
+ - It substitutes values for variables into the template and returns the template string with substitutions. Used the Python __getattr__ method to get the required value for the variable.
+ - Added code to cover for the event that the template string starts with a variable. 
+ - The __html_body__ method in each stage class now returns a template string complete with substitutions. It calls the __template_substitute__ method to get the finshed string.
  
 
 ### 9. [CSS implementation](https://github.com/ElAwbery/Lucky_Egg/blob/master/09.%20Add%20CSS.py)
