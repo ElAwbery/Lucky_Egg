@@ -36,7 +36,8 @@ Below is a short summary of each step in the project. Each step involves the add
 
 ## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
-Wrote code to display the body of an HTML file in a browser tab. 
+
+I wrote code to display the body of an HTML file in a browser tab. This was a preliminary exercise; the approach taken in the next stage was different, and none of this code carried over.
 
  - Wrote Python code to create an HTML file and write it to the file system. 
  - Imported the Python __os__ and __webbrowser__ libraries. 
@@ -49,25 +50,24 @@ Wrote code to display the body of an HTML file in a browser tab.
 I also wrote a couple of functions to take input from a user then make and store a new HTML file incorporating the input. 
 
 
-### 2. [Wrote a local web server to handle http requests](https://github.com/ElAwbery/Lucky_Egg/blob/master/02.%20Server.py)
+### 2. [Wrote a local web server to handle HTTP requests](https://github.com/ElAwbery/Lucky_Egg/blob/master/02.%20Server.py)
 
 Once I understood how to write to the browser from my code, I wanted to build a local server to do this for me, and to handle requests from the browser.
 
-- Imported the Python http.server and socketserver libraries. 
+- Imported the Python __http.server__ and __socketserver__ libraries. 
 
-The http.server documentation [here.](https://docs.python.org/3/library/http.server.html)
+The http.server documentation is [here.](https://docs.python.org/3/library/http.server.html)
  
 - Rewrote the HTML code from step 1. Turned it into boilerplate variables for an HTML page. 
-- Wrote a simple request handler using the built in MyHTTPRequestHandler class. The request handler serves a GET request and constructs an HTML page from the boilerplate variables and the path string.
-- Set up a TCPsocketserver (transmission control protocol), specifying the port to serve and passed the handler class to it.
+- Wrote a simple request handler inheriting from the standard SimpleHTTPRequestHandler class. It serves a GET request and constructs an HTML page from the boilerplate variables and the path string.
+- Set up a socket server, specifying the port to serve, and passed the handler class to it.
  
 
 ### 3. [Made a three page website](https://github.com/ElAwbery/Lucky_Egg/blob/master/03.%20Three%20page%20website.py)
 
-Made a simple website to test the server could handle unique page requests: 
- - Modified the request handler code to make a three page website. 
- - Each page has its own url and displays its own unique text. To do this I set up a dictionary mapping the page path names to their content. 
- - Added links in the content for each page to both the other two pages.
+Made a three-page website to test the server could handle page requests for different URLs, by modifying the request handler code: 
+ - Each page has its own URL and displays its own unique text. To do this I set up a dictionary mapping the page path names to their content. 
+ - Added HTML links in the content for each page to both the other two pages.
  - Added a 404 error response to the request handler. If the browser asks for any page other than the three known page names, the code returns a __page not found__ response. 
   
 
