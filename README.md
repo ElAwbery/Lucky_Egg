@@ -1,4 +1,4 @@
-# Motivation
+## Motivation
 
 Lucky Egg is a self-directed project in which I build a web framework from scratch in order to understand the principles of web development from the ground up. My learning style is unusual in that I want to understand the principles with which I am working. Although the final product will be an app that could be easily made with a modern web framework, my intention is not simply to make an app, but to fully understand how each component of the web architecture functions and how it contributes to the finished product. 
 
@@ -8,7 +8,7 @@ Prior to starting this project in December 2018 I had no web development experie
 
 Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete.  
 <br>
-# Building the framework
+## Building the framework
 
 I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the HTTP request at the HTTP protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to the corresponding version of the code. 
 
@@ -16,9 +16,8 @@ Once I've built each next component of the web framework, I replace it with an o
 
 I wrote all the code from scratch, save a very few lines of glue boilerplate I took from web sources. Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
-
 <br>
-# The Pokemon Go Lucky Egg preparation app
+## The Pokemon Go Lucky Egg preparation app
 
 The end product will be a web app for Pokemon Go players. Players can set off a Lucky Egg timer which lasts for 30 minutes. While the Lucky Egg is activated, they accomplish a set of tasks. Figuring out the tasks in real time takes longer than the 30 minutes so players normally prepare beforehand to get the best value from their Lucky Egg. 
 
@@ -30,7 +29,7 @@ Normally players prepare for a Lucky Egg by looking through their Pokemon deck a
 
 My app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user can print.  
 <br>
-# System architecture
+## System architecture
  
 The end product will be a data entry app, with some options and a final button to press to produce the pdf. (It is not yet finished; you can see the state of my progress below.)
 
@@ -38,7 +37,6 @@ My back-end web framework is Flask-like: an MVC architecture with a templating e
 
 Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.  
 <br>
-# Bricks and mortar: building each block of the web framework 
 
 ## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
