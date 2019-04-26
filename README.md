@@ -133,7 +133,7 @@ The [wiki.Python page](https://wiki.python.org/moin/Templating) has information 
 This was one of several places I used Python's introspection and reflection mechanisms. In this case, the __\_\_getattr\_\___ method, documented [here](https://docs.python.org/3/reference/datamodel.html#customizing-module-attribute-access).
 
  - The template engine is implemented as the __template_substitute__ method of the pokemon parent class. This method takes an HTML string which is a template. It substitutes data attribute values for variables in the template. It uses the __\_\_getattr\_\___ method to get the required value for the variable.
- - Handle the eventuality that the template string starts with a variable. 
+ - It handles the eventuality that the template string starts with a variable. 
  - The __html_body__ method in each stage class now returns a template string complete with substitutions. It calls the __template_substitute__ method to get the finshed string.
  - Wrote templates for each of the stages and added them to the HTML constructor of the stage subclass.
  
@@ -145,7 +145,7 @@ The point of this exercise was to write some CSS and understand how to add it in
  - Added a CSS page link to the header meta for HTML pages.
  - Updated the server GET method so that it sends the CSS page on request.
  - Made some styling decisions and implemented them as part of the CSS page. 
- - I made the status line a class attribute, added it as a variable to the HTML template and applied CSS to make a colorful 'updated' banner.
+ - I reimplemented the status line by making it a pokemon class attribute. That makes it usable as a variable in the HTML template. I applied CSS to make the status line a colorful 'Updated' banner.
 
 ## Phase 2: implementing an object relational map and MVC architecture
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
