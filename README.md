@@ -71,7 +71,7 @@ Made a three-page website to test the server could handle page requests for diff
  - Added a 404 error response to the request handler. If the browser asks for any page other than the three known page names, the code returns a __page not found__ response. 
   
 
-### 4. [Separated the website from the server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
+### 4. [Separated the specific website from the generic server code](https://github.com/ElAwbery/Lucky_Egg/blob/master/04.%20Page%20class.py)
 
 Defined a page class:
 - The page class standardizes the formula for different types of web page.
@@ -81,36 +81,34 @@ Defined a page class:
 
 The class structure needed subclasses for different page types because each pokemon species stage has distinct characteristics. For example, it required a unique page formula for first_stage pokemon objects because only first_stage pokemon evolve into second stage pokemon: 
 - Wrote three pokemon object subclasses: first_stage, second_stage and third_stage.
-- Wrote an html_body method for each subclass. It returns the html string for the body of that page type.
+- Wrote an __html_body__ method for each subclass. It returns the HTML string for the body of that page type.
 
-All the pokemon species in one evolutionary sequence share the same candy, so only the first_stage pokemon object keeps track of the candy count.
-- Initialized the candy_count attribute in the first_stage class.
+All the pokemon species in one family share the same candy, so only the first_stage pokemon object keeps track of the candy count.
+- Initialized the candy_count attribute in the __first_stage__ class.
 
-Updated the GET request to get the correct html body for each page type:
-- Changed the pokemon dictionary keys from path strings to pokemon object names. Eventually I will map names to objects. 
-- Re-wrote the pokemon dictionary values to call the required pokemon subclass __html_body__ method.
-- Documented the code in detail to reflect the changes.
-
+Updated the GET request to get the correct HTML body for each page type:
+- Changed the pokemon dictionary keys from path strings to pokemon object names. (In step 6, I map names to objects.) 
+- The pokemon dictionary values are created by calling the required pokemon subclass __html_body__ method.
 
 ### 5. [Wrote an HTML form for user data entry](https://github.com/ElAwbery/Lucky_Egg/blob/master/05.%20HTML%20form.py)
 
 Read about HTML forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) and [here](https://en.wikipedia.org/wiki/Form_(HTML)).
 
-The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Eventually I will add functionality to update the species' count and the candy count.
+The Lucky Egg app user wants to know how many of a pokemon species they have, and how many of that pokemon family's candy. Later I add functionality to update the species' count and the candy count; in this step I'm just generating the form.
 
-- Wrote an HTML form with two input boxes for a pokemon species object, one box for that species' count (eg: how many Squirtles the user has in their pokemon app) and the other for its candy count.
+- Wrote an HTML form with two input boxes for a pokemon species object, one box for that species' count (e.g.: how many Squirtles the user has) and the other for its candy count.
 - Added an update button.
 - Integrated the form into the request handler class and tested it displayed correctly in the browser for its pokemon object page type.
 
 
 ### 6. [Added name_to_object method and web forms to the page class](https://github.com/ElAwbery/Lucky_Egg/blob/master/06.%20Add%20web%20forms.py)
 
-The pokemon dictionary values were becoming unwieldy. Now that I have an object oriented architecture, the class structure can keep track of all the user's pokemon data and turn it into HTML pages for the website using HTML forms. The code outside the class need only refer to the pokemon object. In order to implement thta I wanted to use the web page name (the name of the pokemon species) from the browser to get all the required pokemon data:
+The pokemon dictionary values were becoming unwieldy. Now that I have an object oriented architecture, the class structure can keep track of all the user's pokemon data and turn it into HTML pages for the website using HTML forms. The code outside the class need only refer to the pokemon object. In order to implement that I wanted to use the URL (which is the name of the pokemon species) to get all the required pokemon data:
 
-- Re-wrote the pokemon dictionary so that its values were pokemon objects. It now maps pokemon names to objects. 
+- Re-wrote the pokemon dictionary code so it maps pokemon names to objects (rather than HTML strings). 
 - Wrote a __name_to_object__ method for the pokemon class. It retrieves the stored pokemon object from its string name in the pokemon dictionary.
 
-I wanted the page type for each pokemon stage to display information about that pokemon's evolutionary sequence, how many the user has in their Pokemon app and how many candies they have for that sequence of evolutions:
+I wanted the page type for each pokemon stage to display information about that pokemon's family (evolutionary sequence), how many instances of the species the user has in their Pokemon app, and how many candies they have for that family:
 
 - Added HTML forms to the __html_body__ methods for the pokemon stage subclasses.
 
@@ -119,11 +117,11 @@ I wanted the page type for each pokemon stage to display information about that 
 
 This step added functionality for the web app user to update their pokemon species' counts and candy counts. 
 
-The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html).
+Python gets the POST data as a stream object, not a string. The Python documentation for working with streams is [here](https://docs.python.org/3/library/io.html).
 
-- Implemented the __post__ method of the request handler class so that the client can modify class data attributes (pokemon species count and candy counts). 
+- Implemented the __post__ method of the request handler class so that the user can modify class data attributes (pokemon species count and candy counts). 
 - Caught errors using the built in __send_error__ method of Python's request handler class. 
-- The updated pokemon species page now displays its status as 'Updated'.  
+- The species page, after a POST update, now displays its status as 'Updated'.  
 
 
 ### 8. [Wrote a template engine, added templates and a template method to the website code](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
