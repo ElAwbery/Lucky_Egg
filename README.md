@@ -28,7 +28,9 @@ My app will make it easy to see which species belong together in a Pokemon famil
 <br>
 # System architecture
  
-The web app is not yet finished. The end product will be a data entry app, with some options and a final button to press to produce the pdf. The system architecture on the back end is Flask-like. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality.
+The end product will be a data entry app, with some options and a final button to press to produce the pdf. (It is not yet finished; you can see the state of my progress below.)
+
+My back-end web framework is Flask-like: an MVC architecture with a templating engine, ORM, and router. This is mostly complete. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality.
 
 Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.  
 <br>
@@ -147,21 +149,21 @@ The point of this exercise was to write some CSS and understand how to add it in
  - Made some styling decisions and implemented them as part of the CSS page. 
  - I reimplemented the status line by making it a pokemon class attribute. That makes it usable as a variable in the HTML template. I applied CSS to make the status line a colorful 'Updated' banner.
 
-## Phase 2: implementing an object relational map and MVC architecture
+## Phase 2: implementing an MVC architecture with an object relational map 
 ### 10. [Set up a database](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.ii%20Load%20and%20save.py)
-In Phase 1 I accessed web page data via a dictionary that mapped page names to class objects. Eventually the web app will access a data collection of several hundred pokemon objects. This step separated data storage from my application code so that I could update the code in future without interfering with the collection and storage of data.  
+Phase 1 included all the data in the code, and it lived in the Python runtime. This step moved the data to a MySQL database.
 
- - Using PHPMyAdmin in MAMP I created a MySQL table. Made a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) for the table for future reference.
- - At this stage there was one table. The database name was Pokemon. The columns in the table matched the pokemon class data attributes. 
+ - Using PHPMyAdmin in MAMP I created a MySQL table. I added a [SQL dump](https://github.com/ElAwbery/Lucky_Egg/blob/master/10.i%20SQL%20dump.sql) of the table to the git repository.
+ - In this step there was a single table, whose column names matched the pokemon class data attributes. 
  
 Some tutorials I found helpful: 
  
 [Python MySQL developer guide](https://dev.mysql.com/doc/connector-python/en/)\
 [SQL tutorial](http://www.sqltutorial.org)
       
-  - Imported the Python libraries __importlib__ and __mysql.connector__
-  - Wrote a __load__ function. It constructs a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name. The function returns a pokemon species object. 
-  - Wrote a __save_to_database__ function. It takes a pokemon species object as argument and saves its data attributes to a table row. 
+  - Imported the Python library __mysql.connector__; that also required importing __importlib__.
+  - Wrote a __load__ function. It constructs and returns a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name.
+  - Wrote a __save_to_database__ function. It takes a pokemon species object as its argument and saves its data attributes to a table row. 
   - Removed dead code, including the pokemon dictionary. 
 
     
