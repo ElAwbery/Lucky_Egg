@@ -8,7 +8,6 @@ Prior to starting this project in December 2018 I had no web development experie
 
 Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete.
 
-<br>
 ## Building the framework
 
 I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the HTTP request at the HTTP protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to the corresponding version of the code. 
@@ -17,7 +16,6 @@ Once I've built each next component of the web framework, I replace it with an o
 
 I wrote all the code from scratch, save a very few lines of glue boilerplate I took from web sources. Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
 
-<br>
 ## The Pokemon Go Lucky Egg preparation app
 
 The end product will be a web app for Pokemon Go players. Players can set off a Lucky Egg timer which lasts for 30 minutes. While the Lucky Egg is activated, they accomplish a set of tasks. Figuring out the tasks in real time takes longer than the 30 minutes so players normally prepare beforehand to get the best value from their Lucky Egg. 
