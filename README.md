@@ -126,12 +126,13 @@ Python gets the POST data as a stream object, not a string. The Python documenta
 
 ### 8. [Wrote a template engine, added templates and a template method to the website code](https://github.com/ElAwbery/Lucky_Egg/blob/master/08.%20Add%20template%20to%20site.py)
 
-The [wiki.Python page](https://wiki.python.org/moin/Templating) has information about template writing in Python. A general resource for understanding templating is [here](https://allwebcodesign.com/website-templates.htm). 
+The [wiki.Python page](https://wiki.python.org/moin/Templating) has information about template writing in Python. A general resource for understanding templating is [here](https://allwebcodesign.com/website-templates.htm).
+
+This was one of several places I used Python's introspection and reflection mechanisms. In this case, the __\_\_getattr\_\___ method, documented [here](https://docs.python.org/3/reference/datamodel.html#customizing-module-attribute-access).
 
 In this step I implemented a simple templating system in order to understand how one works:
  - Wrote templates and added them to the HTML constructor in each stage class. Used data attribute names for variables.
- - Defined the __template_substitute__ method for the pokemon parent class. This method takes an HTML string which is a template.
- - It substitutes values for variables into the template and returns the template string with substitutions. Used the Python __getattr__ method to get the required value for the variable.
+ - The template engine is implemented as the __template_substitute__ method of the pokemon parent class. This method takes an HTML string which is a template. It substitutes data attribute values for variables in the template. Used the Python __getattr__ method to get the required value for the variable.
  - Added code to cover for the event that the template string starts with a variable. 
  - The __html_body__ method in each stage class now returns a template string complete with substitutions. It calls the __template_substitute__ method to get the finshed string.
  
