@@ -12,7 +12,11 @@ Eventually I intend to make a tutorial accompanying this project to facilitate o
 
 I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the HTTP request at the HTTP protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to the corresponding version of the code. 
 
-Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies.  
+Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies.
+
+I wrote all the code from scratch, save a very few lines of glue boilerplate I took from web sources. Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
+
+
 <br>
 # The Pokemon Go Lucky Egg preparation app
 
@@ -174,7 +178,7 @@ This step involved no new user-visible functionality. I implemented an [object r
 The ORM is implemented as the class __ORM_object__. Classes that inherit from __ORM_object__ are automatically mapped to the database. 
 
 The code assumes that class names are identical to the names of corresponding database tables. This allows generic code to load and store all attribute values:
- - The __ORM_object__'s __\_\_init\_\___ method instantiates objects. This is a generic process that will not change if new classes with unique data attributes are added to the application code.
+ - The __ORM_object__'s __\_\_init\_\___ method instantiates objects. This is a generic process that will not change if new classes are added to the application code.
  - Values stored in the object's table row are loaded using its unique ID. The __\_\_init\_\___ method sets data attributes to database values, mapping table column headings to data attribute names.
  - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to duplicate versions of an object. To avoid this I added an __ID_to_object__ class dictionary that memoizes the loading, guaranteeing an object is loaded only once per interpreter session.
  
@@ -190,7 +194,7 @@ I normalized the database to reflect the new class structure:
  - Made column names in the tables identical to the required data attributes of the two __ORM_object__ subclasses.
  - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The new generic store method updates table data with attribute values using the object's UID to find the relevant table row.
  
-I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the __ORM_object__ scope. 
+I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the ORM itself. 
  - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID. The UIDs are not global (a family object might end up with the same UID as a species object) so the __ID_to_object__ dictionary uses a tuple of a table name and a UID as its keys. 
  - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute, and then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
  - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table.
@@ -209,27 +213,26 @@ I separated the server code from the application code into two modules. The [app
  - Additionally I separated out the [template engine](https://github.com/ElAwbery/Lucky_Egg/blob/master/12.%20Modularization/template.py) from the application module. It contains no application specific code. 
      
  
-### 13. [Prevented SQL injection attacks and added store on set](https://github.com/ElAwbery/Lucky_Egg/tree/master/13.%20Prevent%20SQL%20injection%20attacks)
+### 13. [Prevented SQL injection attacks and implemented automatic database update on set](https://github.com/ElAwbery/Lucky_Egg/tree/master/13.%20Prevent%20SQL%20injection%20attacks)
 
  - Added prepared cursor objects into the database_ORM module and used parameters to update table values.
- - Integrated set and store functionality into the ORM code, replacing the store method of previous versions with a specialized setattr.  
- - Updated the application code accordingly so that it no longer sets attributes.
+ - Implemented store-on-set functionality in the ORM, replacing the store method of previous versions with a specialized __\_\_setattr\_\___ method (an example of Python reflection).  
+ - Removed explicit calls to __store_to_database__ from the application code, since the ORM now handles this automatically.
 
  
-## Phase 3: finalizing the web app
+## Phase 3: completing the HTML-only web app
 ### 14. [Replaced home built template engine with Jinja2](https://github.com/ElAwbery/Lucky_Egg/tree/master/14.%20Jinja2)
 
-My intention in each stage of this project is to learn the functionality of a part of the web framework, then replace it with an off-the-shelf program, understanding how it fits with the whole. In this step instead of augmenting my home-built template engine with branching options, I replaced it with the more powerful Jinja2:
+My intention in each stage of this project is to implement the functionality of a part of the web framework, understanding how it fits with the whole, then replace it with an off-the-shelf program. In this step instead of adding functionality to my home-built template engine, which seemed like it would be reinventing the wheel, I replaced it with the more powerful Jinja2:
 
- - Added base template .html file with four child templates for pokemon species stages.
- - Added functionality to render templates for pokemon species.
- - Updated HTML variables in the application code.
-
-
+ - Imported __Jinja2__ library.
+ - Added new code to integrate Jinja2 to render templates.
+ - Created base template .html file, plus four child templates for pokemon species stages.
+ 
 ### 15. [Added tabular view](https://github.com/ElAwbery/Lucky_Egg/tree/master/15.%20Tabular%20view)
-By now the Lucky Egg app shows the user a page for each of their pokemon species, with family relationships, pokemon count and candy count. The user can browse between species page views, but can't yet see all of their pokemon on one page. 
+In steps before this one, the Lucky Egg app showed the user a separate page for each of their pokemon species. The user could browse between species page views, but could not yet see all of their pokemon on one page. 
 
-This step builds a new page view. It shows a tabular view of all the pokemon species in the database in rows according to family stages. For example, Squirtle, Wartortle, Blastoise are all on one row and the baby column in that row is empty, because the Squirtle family does not have a baby pokemon. 
+This step provides a new view. It shows a table of all the pokemon species in the database, in rows according to family stages. For example, Squirtle, Wartortle, Blastoise—all the members of one family—are on one row. The baby column in that row is empty, because the Squirtle family does not have a baby pokemon. 
 
  - Updated template rendering function to include a tabular page view of all pokemon species in all families.
  - Added 'get all objects of a given class' functionality to the ORM code and separated the __UID_to_object__ method out into a helper function.
@@ -239,7 +242,3 @@ This step builds a new page view. It shows a tabular view of all the pokemon spe
  
 <br>
      
-Thanks to [@meaningness](https://twitter.com/Meaningness) for advice on architectural design and code review. 
-
-
-
