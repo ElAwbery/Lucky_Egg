@@ -27,15 +27,14 @@ One of the main tasks accomplished during a Lucky Egg timer is species' evolutio
 Normally players prepare for a Lucky Egg by looking through their Pokemon deck at their species counts and candies and working out which of their species they want to evolve. It can get confusing keeping track of candies and which species are ready to evolve: in the Pokemon Go app, Pokemon species are not ordered by family, so deciding whether or not to evolve a first stage or a second stage species, or whether to wait for more candies, may involve scrolling back and forth many times through several hundred species.
 
 My app will make it easy to see which species belong together in a Pokemon family. The to-do list is compiled based on calculations derived from information that the user enters manually from their Pokemon Go phone app into the Lucky Egg web app. Given user input data, the app will outline all possible evolutions and tasks for the Lucky Egg and will ask for user input again where they have a choice. The web app then makes a pdf that the user can print.  
-<br>
+
 ## System architecture
  
 The end product will be a data entry app, with some options and a final button to press to produce the pdf. (It is not yet finished; you can see the state of my progress below.)
 
 My back-end web framework is Flask-like: an MVC architecture with a templating engine, ORM, and router. This is mostly complete. On the front end I'm planning to write some custom JavaScript to make sure I know how to do that, then to replace it with React. Finally I'll add the pdf generation functionality.
 
-Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.  
-<br>
+Below is a short summary of each step in the project. Each step involves the addition of some new functionality, or a significant refactoring. The section headers link to the finished version of my code for that step. Eventually I will present each of these steps in a tutorial page for other learners who want to understand web development in terms of the principle and function of its parts.
 
 ## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
@@ -235,7 +234,4 @@ This step provides a new view. It shows a table of all the pokemon species in th
  - Added 'get all objects of a given class' functionality to the ORM code and separated the __UID_to_object__ method out into a helper function.
  - Added an all_pokemon CSS stylesheet to the pokemon handler class
  - Updated __get_router__ and __post_router__ request handling accordingly
- - Removed status line attribute from the pokemon class and made it a template variable instead
- 
-<br>
-     
+ - Removed status line attribute from the pokemon class and made it a template variable instead    
