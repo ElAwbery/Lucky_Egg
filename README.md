@@ -163,39 +163,40 @@ Some tutorials I found helpful:
       
   - Imported the Python library __mysql.connector__; that also required importing __importlib__.
   - Wrote a __load__ function. It constructs and returns a pokemon species object (first, second or third stage) from a row in the database table using the pokemon name.
-  - Wrote a __save_to_database__ function. It takes a pokemon species object as its argument and saves its data attributes to a table row. 
+  - Wrote a __save_to_database__ function. It takes a pokemon species object as its argument and saves its data attributes to a table row. Operations that modify pokemon species objects call this.
   - Removed dead code, including the pokemon dictionary. 
 
     
-### 11. [Refactored the code and normalized the database](https://github.com/ElAwbery/Lucky_Egg/blob/master/11.ii%20Refactoring%20code%20to%20normalize%20database.py)
+### 11. [Implemented an ORM and normalized the database](https://github.com/ElAwbery/Lucky_Egg/blob/master/11.ii%20Refactoring%20code%20to%20normalize%20database.py)
 
-This step involved no new functionality. I refactored the code, implementing an [object relational map.](https://en.wikipedia.org/wiki/Object-relational_mapping) This was an exercise in separating out database operations from the application code. In principle I wanted to build an interface with the database that had no application specific code. The application code also must not know any information specific to the database. 
+This step involved no new user-visible functionality. I implemented an [object relational map](https://en.wikipedia.org/wiki/Object-relational_mapping) (ORM). This separates database operations from the application code. The principle is that the interface with the database has no application specific code. The application code also must not know any information specific to the database. Implementing this required extensive refactoring of the existing code.
 
-The ORM_object code assumes that user defined types (classes) have identical table names in the database. This means generic code stores and loads all attribute values:
- - Wrote an __ORM_object__ class to handle database operations. The __init__ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
+The ORM is implemented as the class __ORM_object__. Classes that inherit from __ORM_object__ are automatically mapped to the database. 
+
+The code assumes that class names are identical to the names of corresponding database tables. This allows generic code to load and store all attribute values:
+ - The __ORM_object__ __\_\_init\_\___ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
  - Data attribute values stored in table rows are loaded using each object's unique ID.
  - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I added an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
  
-In order to avoid repetition in the database I refactored the application class structure into two cross-referencing __ORM_obejct__ subclasses, __pokemon_family__ and __pokemon_species__.
-
- - The __pokemon_family__ class keeps track of candy counts and family members which are __pokemon_species__ objects. 
- - The __pokemon_species__ class keeps track of individual pokemon counts. Because the family class now tracks the species' stages, the __pokemon_species__ class no longer requires separate stage subclasses.  
+In order to avoid redundancy in the database I refactored the application class structure into two cross-referencing __ORM_object__ subclasses, __pokemon_family__ and __pokemon_species__:
+ - The __pokemon_family__ class keeps track of candy counts and its family members, which are __pokemon_species__ objects. 
+ - The __pokemon_species__ class keeps track of the count of a single species. Because the family class now tracks the species' stages, the __pokemon_species__ class no longer requires separate stage subclasses.  
  - Added HTML template variables to a __get_html__ method in the __pokemon_species__ class. 
  - Removed the subclasses that no longer contained methods or attributes of their own. 
  - Added a new HTML template variable for baby pokemon pages. (The previous code did not include the baby stage of Pokemon evolution sequences.)
  
 I normalized the database to reflect the new class structure:
- - Built two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. (The __ORM_object__ code uses its subclass names to access database tables.) 
+ - Built two new database tables with names identical to the __pokemon_species__ and __pokemon_family__ classes. (The __ORM_object__ code uses its subclass names as identifiers for database tables.) 
  - Made column names in the tables identical to the required data attributes of the two __ORM_object__ subclasses.
- - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The store method updates table data with attribute values using the object's UID to find the relevant table row.
+ - Adapted the __load__ and __store__ methods for class objects (previously part of the application code) for the __ORM_object__ class. The new generic store method updates table data with attribute values using the object's UID to find the relevant table row.
  
 I needed a way for the ORM_object code to interface with the application code (the pokemon classes) without using any information specific to the application. To do this I used UIDs for all ORM objects. The application code does not know the UIDs of any of its objects: these are specific to the database and used only in the __ORM_object__ scope. 
- - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID. The UIDs are not global (a family object might end up with the same UID as a species object) so the __ID_to_object__ dictionary uses both table name and UID for its keys. 
- - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
+ - Added UID columns to the pokemon_species and pokemon_familes tables. The family UID is distinct from the individual species UID. The UIDs are not global (a family object might end up with the same UID as a species object) so the __ID_to_object__ dictionary uses a tuple of a table name and a UID as its keys. 
+ - Wrote a __value_to_ORM_object__ helper function. This gets the UID for an ORM_object using a data attribute, and then looks for the object in the dictionary. If the object is not in the dictionary, it calls the __ORM_object__ class to instantiate a new object and memoizes it.
  - Families in the pokemon_families table should know which species are family members and individual pokemon in the pokemon_species table should know which family they belong to. The family column in the pokemon_species table now contains a foreign key, the family UID. The evolution stages columns in the pokemon_family table contain foreign keys to individual species in the pokemon_species table.
 
 
-### 12. [Modularization:](https://github.com/ElAwbery/Lucky_Egg/tree/master/12.%20Modularization)
+### 12. [Modularization as an MVC architecture](https://github.com/ElAwbery/Lucky_Egg/tree/master/12.%20Modularization)
 
 After the refactoring in step 11 I could easily reorganize the program into a modular [MVC](https://en.wikipedia.org/wiki/Model–view–controller) architecture. 
 
