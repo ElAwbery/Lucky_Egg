@@ -174,9 +174,9 @@ This step involved no new user-visible functionality. I implemented an [object r
 The ORM is implemented as the class __ORM_object__. Classes that inherit from __ORM_object__ are automatically mapped to the database. 
 
 The code assumes that class names are identical to the names of corresponding database tables. This allows generic code to load and store all attribute values:
- - The __ORM_object__ __\_\_init\_\___ method instantiates objects, assigning table column headings to data attribute names. This is an abstract process that will not change if new classes with unique data attributes are added to the application code.
- - Data attribute values stored in table rows are loaded using each object's unique ID.
- - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to multiple loads of one object. To avoid this I added an __ID_to_object__ class dictionary that guarantees an object is loaded only once per interpreter session.
+ - The __ORM_object__'s __\_\_init\_\___ method instantiates objects. This is a generic process that will not change if new classes with unique data attributes are added to the application code.
+ - Values stored in the object's table row are loaded using its unique ID. The __\_\_init\_\___ method sets data attributes to database values, mapping table column headings to data attribute names.
+ - After I normalized the database (see below) I realized that cross references between database tables using foreign keys could lead to duplicate versions of an object. To avoid this I added an __ID_to_object__ class dictionary that memoizes the loading, guaranteeing an object is loaded only once per interpreter session.
  
 In order to avoid redundancy in the database I refactored the application class structure into two cross-referencing __ORM_object__ subclasses, __pokemon_family__ and __pokemon_species__:
  - The __pokemon_family__ class keeps track of candy counts and its family members, which are __pokemon_species__ objects. 
