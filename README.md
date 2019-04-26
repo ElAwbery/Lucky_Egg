@@ -1,26 +1,26 @@
 # Motivation
 
-Lucky Egg is a self-orchestrated project in which I build a web framework from scratch in order to understand the principles of web development from the ground up. My learning style is unusual in that I want to understand the principles with which I am working. Although the final product will be an app that could be easily made with a modern web framework, my intention is not simply to make an app, but to fully understand how each component of the web architecture functions and how it contributes to the finished product. 
+Lucky Egg is a self-directed project in which I build a web framework from scratch in order to understand the principles of web development from the ground up. My learning style is unusual in that I want to understand the principles with which I am working. Although the final product will be an app that could be easily made with a modern web framework, my intention is not simply to make an app, but to fully understand how each component of the web architecture functions and how it contributes to the finished product. 
 
 This approach would be inefficient if my purpose was simply to build a web site. It is usual and sometimes necessary to accept complex tools as given: many people build good sites using code they don't fully understand. My purpose here is to understand how web development works systematically, not to learn tools to make products. 
 
-Prior to starting this project in December 2018 I had no web development experience other than occasionally writing a few lines of html. I started to learn Python in March 2018. After teaching myself the basic syntax (see my Python [practice repo](https://github.com/elawbery/Python-Practice)) I completed the EdX MIT 6.00.1x online [Introduction to Computer Science and programming](https://github.com/elawbery/MIT-6.00.1x) and 6.00.2x [Introduction to computational thinking and data science](https://github.com/ElAwbery/MIT-6.00.2x).
+Prior to starting this project in December 2018 I had no web development experience other than occasionally writing a few lines of HTML. I started to learn Python in March 2018. After teaching myself the basic syntax (see my Python [practice repo](https://github.com/elawbery/Python-Practice)) I completed the EdX MIT 6.00.1x online [Introduction to Computer Science and programming](https://github.com/elawbery/MIT-6.00.1x) and 6.00.2x [Introduction to computational thinking and data science](https://github.com/ElAwbery/MIT-6.00.2x).
 
 Eventually I intend to make a tutorial accompanying this project to facilitate others through the same learning process. Each of the steps in building the architecture will expand into a blog post in which I outline the next phase of the project and set a series of coding tasks for users to complete.  
 <br>
 # Building the framework
 
-I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the http request at the http protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to an updated version of the code. 
+I started at a level just above a raw socket connection, using the SimpleHTTPrequestHandler from the Python server library. This parses the HTTP request at the HTTP protocol level. From there I have been building the web site and architecture in stages. I outline each completed stage below with a link to the corresponding version of the code. 
 
-Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was Thisunecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies.  
+Once I've built each next component of the web framework, I replace it with an off-the-shelf component – one whose principles and function I then understand. For example: I implemented a simple template engine so that I knew how a template engine works and its role in the overall architecture. Then I replaced it with Jinja2. Duplicating all the functionality of Jinja2 was unecessary because the point of the project is to understand in practice the structure of web frameworks and their internal dependencies.  
 <br>
 # The Pokemon Go Lucky Egg preparation app
 
 The end product will be a web app for Pokemon Go players. Players can set off a Lucky Egg timer which lasts for 30 minutes. While the Lucky Egg is activated, they accomplish a set of tasks. Figuring out the tasks in real time takes longer than the 30 minutes so players normally prepare beforehand to get the best value from their Lucky Egg. 
 
-My app will put together a paper sheet users can take into the field with them when they play Pokemon Go so they can tick off what needs to be done. 
+My app will generate a paper sheet (PDF) that users can take into the field with them when they play Pokemon Go so they can tick off what needs to be done. 
 
-One of the main tasks accomplished during a Lucky Egg timer is species' evolution. Pokemon species belong to families. A baby evolves into a first stage species, first stage to second stage, second to third. Not all species evolve, not all families have babies or second or third stages. Those species that do evolve require accumulation of a specified number of candies in order to do so. Different species need different amounts of their candy in order to evolve. Candies are the same across families: for example, a Squirtle is a first-stage Pokemon. Squirtle evolves into its second-stage, a Wartortle. Wartortle evolves into Blastoise. All of them use Squirtle candies.  
+One of the main tasks accomplished during a Lucky Egg timer is species' evolution. Pokemon species belong to families. A baby evolves into a first stage species, first stage to second stage, second to third. Not all species evolve, not all families have babies or second or third stages. Those species that do evolve require accumulation of a specified number of candies in order to do so. Different species need different amounts of their candy in order to evolve. Candies are the same across families. For example, a Squirtle evolves into a Wartortle, which evolves into a Blastoise. All three species use Squirtle candies.  
 
 Normally players prepare for a Lucky Egg by looking through their Pokemon deck at their species counts and candies and working out which of their species they want to evolve. It can get confusing keeping track of candies and which species are ready to evolve: in the Pokemon Go app, Pokemon species are not ordered by family, so deciding whether or not to evolve a first stage or a second stage species, or whether to wait for more candies, may involve scrolling back and forth many times through several hundred species.
 
@@ -36,17 +36,17 @@ Below is a short summary of each step in the project. Each step involves the add
 
 ## Phase 1: building a simple web server and a website with object oriented programming
 ### 1. [Make a connection with the browser using Python](https://github.com/ElAwbery/Lucky_Egg/blob/master/01.%20Python_to_browser.py)
-Wrote code to display the body of an html file in a browser tab. 
+Wrote code to display the body of an HTML file in a browser tab. 
 
- - Wrote Python code to make an html file. This is stored locally. 
- - Imported the Python os and webbrowser libraries. 
+ - Wrote Python code to create an HTML file and write it to the file system. 
+ - Imported the Python __os__ and __webbrowser__ libraries. 
 
  The os.path module implements functions on pathnames. The documentation is [here.](https://docs.python.org/3/library/os.path.html)
 
-Used the os.path.abspath function to retrieve the full path to the stored html file.
-Used the webbrowser.open_new_tab function to show the stored html page in the browser.  
+ - Used the os.path.abspath function to retrieve the full path to the stored HTML file.
+ - Used the webbrowser.open_new_tab function to show the stored html page in the browser.
 
-I also wrote a couple of functions to take input from a user then make and store a new html file with the input. 
+I also wrote a couple of functions to take input from a user then make and store a new HTML file incorporating the input. 
 
 
 ### 2. [Wrote a local web server to handle http requests](https://github.com/ElAwbery/Lucky_Egg/blob/master/02.%20Server.py)
