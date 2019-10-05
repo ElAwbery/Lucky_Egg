@@ -235,3 +235,6 @@ This step provides a new view. It shows a table of all the pokemon species in th
  - Added an all_pokemon CSS stylesheet to the pokemon handler class
  - Updated __get_router__ and __post_router__ request handling accordingly
  - Removed status line attribute from the pokemon class and made it a template variable instead    
+ 
+ ### 16. [Supported branched evolutions](https://github.com/ElAwbery/Lucky_Egg/tree/master/16.%20Supporting%20branched%20evolutions)
+ 
