@@ -236,5 +236,6 @@ This step provides a new view. It shows a table of all the pokemon species in th
  - Updated __get_router__ and __post_router__ request handling accordingly
  - Removed status line attribute from the pokemon class and made it a template variable instead    
  
- ### 16. [Supported branched evolutions](https://github.com/ElAwbery/Lucky_Egg/tree/master/16.%20Supporting%20branched%20evolutions)
+### 16. [Supported branched evolutions](https://github.com/ElAwbery/Lucky_Egg/tree/master/16.%20Supporting%20branched%20evolutions)
+Some Pokémon have multiple parallel evolution options. For example, Eevee can evolve into Jolteon, Vaporeon, Umbreon and others. Previous versions of the app supported only one evolution per Pokémon stage. Now the page display for individual Pokémon species includes branched evolution paths. Future versions will include a tabular view of Pokémon 'families' including multiple evolution options. To make this possible, I changed the database structure as well as some of its column types and updated the application code and ORM to support these changes. 
  
