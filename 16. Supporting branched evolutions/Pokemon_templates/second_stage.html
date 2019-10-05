@@ -1,0 +1,28 @@
+{% extends "pokemon_species.html" %}
+
+{% block stage %}
+<p>{{name}} is a second stage Pokemon.</p>
+
+<p>{% if third == none %}
+        {{name}} does not evolve. 
+    {% else %}
+        {{name}} evolves into a third stage
+        {% for pokemon in third %}
+            <a href = "/{{pokemon}}">{{pokemon}}, </a>
+        {% endfor %}
+        with {{third_evo_requirements}} candies.
+</p>
+    {% endif %}
+<p>Its first stage is <a href = "/{{first}}">{{first}}</a>.</p>
+<p>{{name}} uses {{first}} candies. You have {{candies}} of them.</p>
+
+<form action="{{name}}" method="post">
+    <p>You have 
+    <input type="number" name="new_count" value = "{{count}}" min="0"> {{name}}s.
+    </p>
+    <button type="submit">Update</button>
+</form>
+<p>
+    <a class = "button" href = "/AllPokemon"> View all pokémon </a>
+</p>
+{% endblock stage %}

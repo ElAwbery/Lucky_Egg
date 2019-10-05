@@ -1,0 +1,36 @@
+{% extends "pokemon_base.html" %}
+
+{% block head %}
+<link href="all_pokemon.css" rel="stylesheet" type="text/css"/>
+<title>AllPokemon</title>
+{% endblock head %}
+
+{% block content %}
+<h1>All Pokémon in teh Pokéverse </h1>
+    {{status_line}}
+<form action="/AllPokemon" method="post">
+    <table style="width:30%"> 
+        <tr> 
+            <th>Name</th> 
+            <th>Count</th>  
+            <th>Candies</th> 
+        </tr> 
+        {% for pokemon in all_pokemon %}
+        <tr>  
+            <td><a href = "/{{pokemon.name}}">{{pokemon.name}}</a></td> 
+            <td width="15%" >
+                <input type="number" name="{{pokemon.name}}_count" value = "{{pokemon.count}}" min="0" >
+            </td>
+            {% if pokemon.name == pokemon.first_stage.name %}
+                <td width="15%">
+                    <input type="number" name="{{pokemon.name}}_candies" value = "{{pokemon.family_candies}}" min="0" >
+                </td> 
+            {% else %}
+                <td width="15%"><em>{{pokemon.first_stage.family_candies}}</em></td> 
+            {% endif %}       
+        </tr> 
+        {% endfor %}
+    </table> 
+    <button type="submit">Update</button>
+</form>
+{% endblock  content %}
