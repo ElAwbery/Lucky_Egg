@@ -237,12 +237,12 @@ This step provides a new view. It shows a table of all the pokemon species in th
  - Removed status line attribute from the pokemon class and made it a template variable instead    
  
 ### 16. [Supported branched evolutions](https://github.com/ElAwbery/Lucky_Egg/tree/master/16.%20Supporting%20branched%20evolutions)
-Some Pokémon have multiple parallel evolution options. For example, Eevee can evolve into Jolteon, Vaporeon, Umbreon and others. Previous versions of the app supported only one evolution per Pokémon stage. Now the page display for individual Pokémon species includes branched evolution paths. Future versions will include a tabular view of Pokémon 'families' including multiple evolution options. To make this possible, I changed the database structure as well as some of its column types and updated the application code and ORM to support these changes. All Pokémon species now have a first_stage attribute which keeps track of their family connections. 
+Some Pokémon have multiple parallel evolution options. For example, Eevee can evolve into Jolteon, Vaporeon, Umbreon and others. Previous versions of the app supported only one evolution per species. Now the page display for individual Pokémon species includes branched evolution paths. Future versions will include a tabular view of Pokémon 'families' including multiple evolution options. To make this possible, I changed the database structure as well as some of its column types and updated the application code and ORM to support these changes. All Pokémon species now have a first_stage attribute which keeps track of their family connections. 
  
  - Merged pokemon_family and pokemon_species database tables into one table with column headings UID, name, count, first_stage, stage, family_candies, candy_to_evolve, item_to_evolve.
- - Every Pokémon now has a first_stage attribute which identifies its evolution chain (previously 'family'). This column in the database 
+ - The first_stage attribute identifies the species' evolution chain (previously 'family'). This column in the database 
 has a foreign key constraint, enforcing a link with an object in the table. The first_stage attribute value of a first stage pokemon is itself. 
  - Changed second_stage and third_stage attribute types from ints to lists of pokemon objects. To avoid repetition these attributes are now assigned only in the app code and not stored in the database. 
   - Updated template rendering function to support the changes. 
-  - Updaated HTML files to loop over second and third stage lists. 
-  - Modified the ORM.all_objects_of_class function to support returns filtered by column and values.
+  - Updated HTML files to loop over second and third stage lists. 
+  - Modified the ORM.all_objects_of_class function to support queries filtered by column and values.
